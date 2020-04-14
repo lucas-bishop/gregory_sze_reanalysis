@@ -1,0 +1,237 @@
+Running on
+gl3018
+
+
+PROGRESS: Assembling, quality controlling, clustering, and classifying sequences.
+[H[JLinux version
+
+Using ReadLine,Boost
+
+Using mothur tools location: /nfs/turbo/schloss-lab/bin/mothur_src/tools/
+
+mothur v.1.44.1
+Last updated: 4/13/20
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > make.file(inputdir=data/raw_fastqs/, outputdir=data/mothur_output/, type=gz)
+Setting output directory to: data/mothur_output/
+Setting input directory to: data/raw_fastqs/
+[WARNING]: Unable to find any gz files in your directory.
+
+Output File Names: 
+
+code/mothur/mothurShared.sh: line 43: 230961 Segmentation fault      (core dumped) mothur "#make.file(inputdir="${SAMPLEDIR}", outputdir="${WORKDIR}", type=gz);
+	make.contigs(file=current);
+	screen.seqs(fasta=current, group=current, maxambig=0, maxlength=275, maxhomop=8);
+	unique.seqs(fasta=current);
+	count.seqs(name=current, group=current);
+	align.seqs(fasta=current, reference="${REFDIR}"/silva.v4.fasta);
+	screen.seqs(fasta=current, count=current, start=1968, end=11550);
+	filter.seqs(fasta=current, vertical=T, trump=.);
+	unique.seqs(fasta=current, count=current);
+	pre.cluster(fasta=current, count=current, diffs=2);
+	chimera.vsearch(fasta=current, count=current, dereplicate=T);
+	remove.seqs(fasta=current, accnos=current);
+	classify.seqs(fasta=current, count=current, reference="${REFDIR}"/trainset16_022016.pds.fasta, taxonomy="${REFDIR}"/trainset16_022016.pds.tax, cutoff=80);
+	remove.lineage(fasta=current, count=current, taxonomy=current, taxon=Chloroplast-Mitochondria-unknown-Archaea-Eukaryota);
+	dist.seqs(fasta=current, cutoff=0.03);
+	cluster(column=current, count=current);
+	make.shared(list=current, count=current, label=0.03);
+	classify.otu(list=current, count=current, taxonomy=current, label=0.03)"
+mv: cannot stat ‘data/mothur_output//*.precluster.pick.pick.fasta’: No such file or directory
+mv: cannot stat ‘data/mothur_output//*.vsearch.pick.pick.count_table’: No such file or directory
+mv: cannot stat ‘data/mothur_output//*.opti_mcc.shared’: No such file or directory
+mv: cannot stat ‘data/mothur_output//*.cons.taxonomy’: No such file or directory
+PROGRESS: Creating sample shared file.
+[H[JLinux version
+
+Using ReadLine,Boost
+
+Using mothur tools location: /nfs/turbo/schloss-lab/bin/mothur_src/tools/
+
+mothur v.1.44.1
+Last updated: 4/13/20
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > remove.groups(shared=data/mothur_output//final.shared, groups=PCRwater_neg_1-PCRwater_neg_2-PCRwater_neg_3-empty_1-empty_2-empty_3-empty_4-empty_5-empty_6-empty_7-empty_8-Z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)
+Unable to open data/mothur_output//final.shared. Trying mothur's executable location final.shared.
+Unable to open final.shared. Trying mothur's tools location /nfs/turbo/schloss-lab/bin/mothur_src/tools/final.shared.
+Unable to open /nfs/turbo/schloss-lab/bin/mothur_src/tools/final.shared.
+Unable to open data/mothur_output//final.shared
+[ERROR]: You have no current groupfile, designfile, countfile or sharedfile and one is required.
+[ERROR]: You must provide at least one of the following: fasta, name, taxonomy, group, shared, design, count, phylip, column or list.
+[ERROR]: did not complete remove.groups.
+
+mothur > quit()
+
+
+It took 0 seconds to run 2 commands from your script.
+
+
+
+************************************************************
+************************************************************
+************************************************************
+Detected 3 [ERROR] messages, please review.
+************************************************************
+************************************************************
+************************************************************
+mv: cannot stat ‘data/mothur_output//final.0.03.pick.shared’: No such file or directory
+PROGRESS: Creating mock shared file.
+[H[JLinux version
+
+Using ReadLine,Boost
+
+Using mothur tools location: /nfs/turbo/schloss-lab/bin/mothur_src/tools/
+
+mothur v.1.44.1
+Last updated: 4/13/20
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > get.groups(shared=data/mothur_output//final.shared, groups=Z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)
+Unable to open data/mothur_output//final.shared. Trying mothur's executable location final.shared.
+Unable to open final.shared. Trying mothur's tools location /nfs/turbo/schloss-lab/bin/mothur_src/tools/final.shared.
+Unable to open /nfs/turbo/schloss-lab/bin/mothur_src/tools/final.shared.
+Unable to open data/mothur_output//final.shared
+[ERROR]: You have no current groupfile, designfile, countfile or sharedfile and one is required.
+[ERROR]: You must provide at least one of the following: fasta, name, taxonomy, group, shared, design, count, phylip, column or list.
+[ERROR]: did not complete get.groups.
+
+mothur > quit()
+
+
+It took 0 seconds to run 2 commands from your script.
+
+
+
+************************************************************
+************************************************************
+************************************************************
+Detected 3 [ERROR] messages, please review.
+************************************************************
+************************************************************
+************************************************************
+mv: cannot stat ‘data/mothur_output//final.0.03.pick.shared’: No such file or directory
+PROGRESS: Creating control shared file.
+[H[JLinux version
+
+Using ReadLine,Boost
+
+Using mothur tools location: /nfs/turbo/schloss-lab/bin/mothur_src/tools/
+
+mothur v.1.44.1
+Last updated: 4/13/20
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > get.groups(shared=data/mothur_output//final.shared, groups=PCRwater_neg_1-PCRwater_neg_2-PCRwater_neg_3)
+Unable to open data/mothur_output//final.shared. Trying mothur's executable location final.shared.
+Unable to open final.shared. Trying mothur's tools location /nfs/turbo/schloss-lab/bin/mothur_src/tools/final.shared.
+Unable to open /nfs/turbo/schloss-lab/bin/mothur_src/tools/final.shared.
+Unable to open data/mothur_output//final.shared
+[ERROR]: You have no current groupfile, designfile, countfile or sharedfile and one is required.
+[ERROR]: You must provide at least one of the following: fasta, name, taxonomy, group, shared, design, count, phylip, column or list.
+[ERROR]: did not complete get.groups.
+
+mothur > quit()
+
+
+It took 0 seconds to run 2 commands from your script.
+
+
+
+************************************************************
+************************************************************
+************************************************************
+Detected 3 [ERROR] messages, please review.
+************************************************************
+************************************************************
+************************************************************
+mv: cannot stat ‘data/mothur_output//final.0.03.pick.shared’: No such file or directory

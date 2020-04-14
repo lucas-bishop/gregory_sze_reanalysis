@@ -1,0 +1,7 @@
+Running on
+gl3018
+
+
+PROGRESS: Assembling, quality controlling, clustering, and classifying sequences.
+code/mothur/mothurShared.sh: line 66: syntax error near unexpected token `('
+code/mothur/mothurShared.sh: line 66: `mothur "#remove.groups(shared="${WORKDIR}"/final.shared, groups=PCRwater_neg_1-PCRwater_neg_2-PCRwater_neg_3-empty_1-empty_2-empty_3-empty_4-empty_5-empty_6-empty_7-empty_8-Z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)"'
