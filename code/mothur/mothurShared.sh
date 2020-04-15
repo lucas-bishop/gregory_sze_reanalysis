@@ -23,7 +23,7 @@ export REFDIR=$3
 # Making contigs from fastq.gz files, aligning reads to references, removing any non-bacterial sequences, calculating distance matrix, making shared file, and classifying OTUs
 echo PROGRESS: Assembling, quality controlling, clustering, and classifying sequences.
 
-mothur "#make.file(inputdir="${SAMPLEDIR}", outputdir="${WORKDIR}", type=gz);
+mothur "#make.file(inputdir="${SAMPLEDIR}", outputdir="${WORKDIR}");
 	make.contigs(file=current);
 	screen.seqs(fasta=current, group=current, maxambig=0, maxlength=275, maxhomop=8);
 	unique.seqs(fasta=current);
