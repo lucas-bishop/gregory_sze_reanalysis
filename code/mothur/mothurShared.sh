@@ -71,7 +71,7 @@ mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/sample.final.shared
 echo PROGRESS: Creating mock shared file.
 
 # Removing non-mock groups from shared file
-mothur "#get.groups(shared="${WORKDIR}"/final.shared, groups=Z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)"
+mothur "#get.groups(shared="${WORKDIR}"/final.shared, groups=z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)"
 
 # Renaming output file
 mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/mock.final.shared
