@@ -60,7 +60,7 @@ mv "${WORKDIR}"/*.cons.taxonomy "${WORKDIR}"/final.taxonomy
 echo PROGRESS: Creating sample shared file.
 
 # Removing all mock and control groups from shared file leaving only samples
-mothur "#remove.groups(shared="${WORKDIR}"/final.shared, groups=PCRwater_neg_1-PCRwater_neg_2-PCRwater_neg_3-empty_1-empty_2-empty_3-empty_4-empty_5-empty_6-empty_7-empty_8-Z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)"
+mothur "#remove.groups(shared="${WORKDIR}"/final.shared, groups=PCRwater-PCRwater_neg-PCRwater_neg_2-empty-empty_2-empty_3-empty_4-empty_5-empty_6-empty_7-empty_8-z_mock-z_ext-zymo_mockpcr-zymo_mockpcr_383-z-pm_ext-ps_ext-zymo)"
 
 # Renaming output file
 mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/sample.final.shared
@@ -71,7 +71,7 @@ mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/sample.final.shared
 echo PROGRESS: Creating mock shared file.
 
 # Removing non-mock groups from shared file
-mothur "#get.groups(shared="${WORKDIR}"/final.shared, groups=z_mock_ext-Zymo_mockpcr_1-Zymo_mockpcr_2-Zymo_mockpcr_3)"
+mothur "#get.groups(shared="${WORKDIR}"/final.shared, groups=z_mock-z_ext-zymo_mockpcr-zymo_mockpcr_383-z-pm_ext-ps_ext-zymo)"
 
 # Renaming output file
 mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/mock.final.shared
@@ -82,7 +82,7 @@ mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/mock.final.shared
 echo PROGRESS: Creating control shared file.
 
 # Removing any non-control groups from shared file
-mothur "#get.groups(shared="${WORKDIR}"/final.shared, groups=PCRwater_neg_1-PCRwater_neg_2-PCRwater_neg_3)"
+mothur "#get.groups(shared="${WORKDIR}"/final.shared, groups=PCRwater-PCRwater_neg-PCRwater_neg_2)"
 
 # Renaming output file
 mv "${WORKDIR}"/final.0.03.pick.shared "${WORKDIR}"/control.final.shared
