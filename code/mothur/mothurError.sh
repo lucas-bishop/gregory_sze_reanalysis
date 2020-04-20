@@ -22,7 +22,7 @@ export REFDIR=$2
 # Calculating error rates compared to Zymo reference sequences
 echo PROGRESS: Calculating error rate.
 
-mothur "#get.groups(fasta="${WORKDIR}"/errorinput.fasta, count="${WORKDIR}"/errorinput.count_table, groups=Mock1-Mock2-Mock3-Mock4);
+mothur "#get.groups(fasta="${WORKDIR}"/errorinput.fasta, count="${WORKDIR}"/errorinput.count_table, groups=z_mock-z_ext-zymo_mockpcr-zymo_mockpcr_383-z-pm_ext-ps_ext-zymo);
 	seq.error(fasta=current, count=current, reference="${REFDIR}"/zymo_mock.align, aligned=F)"
 
 
