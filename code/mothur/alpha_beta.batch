@@ -2,13 +2,13 @@
 set.dir(input=data/mothur_output/, output=data/mothur_output/)
 
 #subsample your data - you will need to determine what threshold to use
-sub.sample(shared=final.shared, size=1000)
+sub.sample(shared=final.shared, size=400)
 rarefaction.single(shared=final.shared, calc=sobs, freq=100)
-summary.single(shared=current, calc=nseqs-coverage-invsimpson-shannon-sobs, subsample=1816)
-dist.shared(shared=current, calc=thetayc-braycurtis-jclass, subsample=1000)
+summary.single(shared=current, calc=nseqs-coverage-invsimpson-shannon-sobs, subsample=400)
+dist.shared(shared=current, calc=thetayc-braycurtis-jclass, subsample=400)
 
 #generating 2d nmds
-nmds(phylip=final.thetayc.0.03.lt.dist)
+nmds(phylip=final.thetayc.0.03.lt.ave.dist)
 
 #generating PCoA based on distances
-pcoa(phylip=final.braycurtis.0.03.lt.dist)
+pcoa(phylip=final.braycurtis.0.03.lt.ave.dist)
