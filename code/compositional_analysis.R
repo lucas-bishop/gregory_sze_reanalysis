@@ -10,8 +10,8 @@ taxonomy <- read_tsv("data/mothur_output/final.taxonomy") %>%
   # Split taxonomic information into separate columns for each taxonomic level  
   mutate(taxonomy=str_replace_all(taxonomy, c("\\(\\d*\\)" = "", #drop digits with parentheses around them
                                               ';$' = "", #removes semi-colon 
-                                              'Bacteria_unclassified' = 'Unclassified',
-                                              "_unclassified" = " Unclassified"))) %>% 
+                                              'Bacteria_unclassified' = 'Unclass.',
+                                              "_unclassified" = " Unclass."))) %>% 
   # Separate taxonomic levels into separate columns according to semi-colon.
   separate(taxonomy, into=c("kingdom", "phylum", "class", "order", "family", "genus"), sep=';')
 
@@ -42,16 +42,18 @@ genus_taxa <- phylum_data %>%
   ungroup()
 
 # needs improvement but general idea is there
-genus_taxa %>% filter(genus %in% top_genus) %>% 
+top9_stripplot <- genus_taxa %>% filter(genus %in% top_genus) %>% 
 ggplot(aes(x= kit, y=agg_rel_abund))+
-  geom_hline(yintercept = 0, linetype = "dashed") + 
-  geom_jitter(width = 0.3) + 
+  geom_hline(yintercept=1/400, color="gray")+
+  geom_jitter(width = 0.3, alpha = 0.3) + 
+  geom_boxplot() +
   facet_wrap(~genus) +
   labs(title=NULL, 
        y="Relative abundance (%)")+
+  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
   theme(axis.text.x = element_text(angle=45, hjust=1))
 
-
+ggsave("results/figures/top9_stripchart.pdf", top9_stripplot)
 
 
 
