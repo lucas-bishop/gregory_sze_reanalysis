@@ -39,14 +39,36 @@ genus_taxa <- joined_data %>%
   inner_join(., metadata, by = 'Group') %>% 
   ungroup()
 
-genus_tests <- genus_taxa %>% nest(sample_data = c(-genus)) %>%
-  mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=.)))) %>%
-  unnest(test)
+# Made function to create the table with needed p values from hypothesis testing #
 
+wilcoxon_table_genus <- function(data, kit1, kit2){
+  data %>% 
+  filter(kit == kit1 | kit == kit2) %>% 
+    nest(sample_data = c(-genus)) %>%
+    mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=.)))) %>%
+    unnest(test) %>% 
+    mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% arrange(p.value.adj)
+}
+# PM - PS comparison
+PM_PS_tests <- wilcoxon_table_genus(genus_taxa, "PowerMag", "PowerSoil")
 
+sig_PM_PS_genus <- PM_PS_tests %>% 
+  filter(p.value.adj <= 0.05) %>%
+  pull(genus)
 
+# PM - Zymo comparison
+PM_Zymo_tests <- wilcoxon_table_genus(genus_taxa, "PowerMag", "Zymobiomics")
 
+sig_PM_Zymo_genus <- PM_Zymo_tests %>% 
+  filter(p.value.adj <= 0.05) %>% 
+  pull(genus)
 
+# PS - Zymo comparison
+PS_Zymo_tests <- wilcoxon_table_genus(genus_taxa, "PowerSoil", "Zymobiomics")
+
+sig_PS_Zymo_genus <- PS_Zymo_tests %>% 
+  filter(p.value.adj <= 0.05) %>% 
+  pull(genus)
 
 
 
