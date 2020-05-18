@@ -70,6 +70,27 @@ sig_PS_Zymo_genus <- PS_Zymo_tests %>%
   filter(p.value.adj <= 0.05) %>% 
   pull(genus)
 
+## Plot which are different
+## Facet by comparison probably
+## Maybe make a plot function?
+
+genus_taxa %>% filter(kit == "PowerMag" | kit == "PowerSoil") %>% 
+filter(genus %in% sig_PM_PS_genus) %>%
+  mutate(genus=factor(genus, levels=sig_PM_PS_genus)) %>%
+  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
+  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
+  geom_hline(yintercept=1/400, color="gray") +
+  geom_boxplot() +
+  scale_color_manual(name=NULL,
+                      values=c("blue", "red"),
+                      breaks=c("PowerMag" , "PowerSoil"),
+                      labels=c("PowerMag", "PowerSoil")) +
+  labs(title="Three genus are significantly different between the two kits",
+       x=NULL,
+       y="Relative abundance (%)") +
+  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
+  theme_classic()
+
 
 
 
