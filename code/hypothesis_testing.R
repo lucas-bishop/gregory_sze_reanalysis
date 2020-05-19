@@ -98,7 +98,7 @@ PM_Zymo_plot <- genus_taxa %>% filter(kit == "PowerMag" | kit == "Zymobiomics") 
   ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
   geom_hline(yintercept=1/400, color="gray") +
   geom_boxplot(size = 0.8) +
-  geom_point(alpha = 0.1) +
+  #geom_point(alpha = 0.1) +
   scale_color_manual(name=NULL,
                      values=c("blue", "green3"),
                      breaks=c("PowerMag" , "Zymobiomics"),
