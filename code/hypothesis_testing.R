@@ -21,17 +21,17 @@ taxonomy <- read_tsv("data/mothur_output/final.taxonomy") %>%
 
 otu_data <- shared %>% select(-label, -numOtus) %>%
   pivot_longer(cols=-Group, names_to="otu", values_to="count") %>% 
-  mutate(relabund = count / 400)
+  mutate(relabund = count / 1000)
 
 joined_data <- inner_join(otu_data, taxonomy)
 
 #hypothesis testing to see if any are different across the kits or storage conditions
-
-top_genus <- joined_data %>% group_by(genus) %>% 
-  summarize(agg_rel_abund=sum(relabund)) %>% 
-  arrange(desc(agg_rel_abund)) %>% 
-  top_n(n=9, agg_rel_abund) %>% 
-  pull(genus)
+# this top genus code isn't needed for the wolcoxon tests
+# top_genus <- joined_data %>% group_by(genus) %>% 
+#   summarize(agg_rel_abund=sum(relabund)) %>% 
+#   arrange(desc(agg_rel_abund)) %>% 
+#   top_n(n=9, agg_rel_abund) %>% 
+#   pull(genus)
 
 genus_taxa <- joined_data %>% 
   group_by(Group, genus) %>% 
@@ -79,7 +79,7 @@ filter(genus %in% sig_PM_PS_genus) %>%
   mutate(genus=factor(genus, levels=sig_PM_PS_genus)) %>%
   mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
   ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/400, color="gray") +
+  geom_hline(yintercept=1/1000, color="gray") +
   geom_boxplot(size = 1) +
   geom_point(alpha = 0.1) +
   scale_color_manual(name=NULL,
@@ -96,7 +96,7 @@ PM_Zymo_plot <- genus_taxa %>% filter(kit == "PowerMag" | kit == "Zymobiomics") 
   mutate(genus=factor(genus, levels=sig_PM_Zymo_genus)) %>%
   mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
   ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/400, color="gray") +
+  geom_hline(yintercept=1/1000, color="gray") +
   geom_boxplot(size = 0.8) +
   #geom_point(alpha = 0.1) +
   scale_color_manual(name=NULL,
@@ -108,13 +108,13 @@ PM_Zymo_plot <- genus_taxa %>% filter(kit == "PowerMag" | kit == "Zymobiomics") 
   coord_flip() +
   theme_classic() + theme(legend.position = "bottom")
 
-
+# At 1000 subsamples there are no significantly different genera
 PS_Zymo_plot <- genus_taxa %>% filter(kit == "PowerSoil" | kit == "Zymobiomics") %>% 
   filter(genus %in% sig_PS_Zymo_genus) %>%
   mutate(genus=factor(genus, levels=sig_PS_Zymo_genus)) %>%
   mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
   ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/400, color="gray") +
+  geom_hline(yintercept=1/1000, color="gray") +
   geom_boxplot(size = 1) +
   geom_point(alpha = 0.1) +
   scale_color_manual(name=NULL,
@@ -125,7 +125,6 @@ PS_Zymo_plot <- genus_taxa %>% filter(kit == "PowerSoil" | kit == "Zymobiomics")
        y="Relative abundance (%)") +
   scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
   theme_classic()
-
 
 
 
