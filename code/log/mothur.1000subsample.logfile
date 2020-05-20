@@ -1,0 +1,106 @@
+Windows version
+
+mothur v.1.42.3
+Last updated: 6/24/19
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > set.dir(input=data/mothur_output/, output=data/mothur_output/)
+Mothur's directories:
+outputDir=data/mothur_output/\
+inputDir=data/mothur_output/\
+
+mothur > sub.sample(shared=final.shared, size=1000)
+PCRwater contains 15. Eliminating.
+PCRwater_neg contains 8. Eliminating.
+PCRwater_neg_2 contains 712. Eliminating.
+empty contains 38. Eliminating.
+empty_2 contains 60. Eliminating.
+empty_3 contains 25. Eliminating.
+empty_6 contains 534. Eliminating.
+empty_8 contains 288. Eliminating.
+pm contains 12. Eliminating.
+pm_ext contains 7. Eliminating.
+pm_f_21 contains 34. Eliminating.
+pm_f_26 contains 38. Eliminating.
+pm_f_47 contains 649. Eliminating.
+pm_og_73 contains 477. Eliminating.
+pm_rt_81 contains 12. Eliminating.
+pm_rt_86 contains 27. Eliminating.
+pm_zdr_111 contains 1. Eliminating.
+pm_zdr_112 contains 2. Eliminating.
+pm_zdr_113 contains 5. Eliminating.
+pm_zdr_114 contains 4. Eliminating.
+pm_zdr_115 contains 1. Eliminating.
+pm_zdr_117 contains 2. Eliminating.
+pm_zdr_118 contains 2. Eliminating.
+pm_zdr_120 contains 9. Eliminating.
+pm_zdr_128 contains 9. Eliminating.
+pm_zdr_129 contains 34. Eliminating.
+pm_zdr_130 contains 20. Eliminating.
+pm_zdr_131 contains 22. Eliminating.
+pm_zdr_132 contains 15. Eliminating.
+ps contains 333. Eliminating.
+ps_f_162 contains 472. Eliminating.
+ps_og_191 contains 902. Eliminating.
+ps_rt_201 contains 47. Eliminating.
+ps_rt_218 contains 811. Eliminating.
+ps_rt_227 contains 524. Eliminating.
+ps_zdr_229 contains 2. Eliminating.
+ps_zdr_232 contains 3. Eliminating.
+ps_zdr_234 contains 3. Eliminating.
+ps_zdr_235 contains 1. Eliminating.
+ps_zdr_236 contains 2. Eliminating.
+ps_zdr_238 contains 16. Eliminating.
+ps_zdr_247 contains 15. Eliminating.
+ps_zdr_248 contains 12. Eliminating.
+ps_zdr_249 contains 21. Eliminating.
+ps_zdr_250 contains 22. Eliminating.
+ps_zdr_253 contains 1. Eliminating.
+ps_zdr_254 contains 1. Eliminating.
+ps_zdr_255 contains 1. Eliminating.
+z contains 21. Eliminating.
+z_ext contains 24. Eliminating.
+z_og_294 contains 985. Eliminating.
+z_og_300 contains 915. Eliminating.
+z_og_305 contains 996. Eliminating.
+z_og_306 contains 626. Eliminating.
+z_og_311 contains 568. Eliminating.
+z_og_314 contains 599. Eliminating.
+z_og_320 contains 124. Eliminating.
+z_rt contains 19. Eliminating.
+z_rt_324 contains 344. Eliminating.
+z_zdr contains 338. Eliminating.
+z_zdr_354 contains 471. Eliminating.
+z_zdr_366 contains 68. Eliminating.
+z_zdr_371 contains 53. Eliminating.
+z_zdr_380 contains 165. Eliminating.
+Sampling 1000 from each group.
+0.03
+
+Output File Names: 
+data/mothur_output/\final.0.03.subsample.shared
+
+
+mothur > quit()

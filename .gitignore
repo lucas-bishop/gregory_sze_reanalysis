@@ -9,6 +9,5 @@ data/*/*
 !README.md
 
 *.qsub*
-mothur*logfile
 *temp*
 *.docx

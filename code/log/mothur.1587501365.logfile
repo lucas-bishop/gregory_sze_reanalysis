@@ -1,0 +1,67 @@
+Windows version
+
+mothur v.1.42.3
+Last updated: 6/24/19
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > get.groups(fasta=data/mothur_output//errorinput.fasta, count=data/mothur_output//errorinput.count_table, groups=z_mock-z_ext-zymo_mockpcr-zymo_mockpcr_383-z-pm_ext-ps_ext-zymo)
+Unable to open data/mothur_output//errorinput.fasta. Trying default C:\Users\bisho\bin\errorinput.fasta.
+Unable to open C:\Users\bisho\bin\errorinput.fasta. Trying mothur's executable location C:\Users\bisho\bin\errorinput.fasta.
+Unable to open C:\Users\bisho\bin\errorinput.fasta.
+Unable to open data/mothur_output//errorinput.fasta
+Unable to open data/mothur_output//errorinput.count_table. Trying default C:\Users\bisho\bin\errorinput.count_table.
+Unable to open C:\Users\bisho\bin\errorinput.count_table. Trying mothur's executable location C:\Users\bisho\bin\errorinput.count_table.
+Unable to open C:\Users\bisho\bin\errorinput.count_table.
+Unable to open data/mothur_output//errorinput.count_table
+You have no current groupfile, designfile, countfile or sharedfile and one is required.
+You must provide at least one of the following: fasta, name, taxonomy, group, shared, design, count, phylip, column or list.
+[ERROR]: did not complete get.groups.
+
+mothur > 
+	seq.error(fasta=current, count=current, reference=data/reference_files//zymo_mock.align, aligned=F)
+[WARNING]: no file was saved for count parameter.
+[WARNING]: no file was saved for fasta parameter.
+You have no current fasta file and the fasta parameter is required.
+[ERROR]: did not complete seq.error.
+
+mothur > quit()
+
+
+************************************************************
+************************************************************
+************************************************************
+Detected 2 [ERROR] messages, please review.
+************************************************************
+************************************************************
+************************************************************
+
+
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<^>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<^>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<^>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Detected 2 [WARNING] messages, please review.
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<^>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<^>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<^>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

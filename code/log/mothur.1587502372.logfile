@@ -1,0 +1,107 @@
+Windows version
+
+mothur v.1.42.3
+Last updated: 6/24/19
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > get.groups(fasta=data/mothur_output//errorinput.fasta, count=data/mothur_output//errorinput.count_table, groups=z_mock-z_ext-zymo_mockpcr-zymo_mockpcr_383-z-pm_ext-ps_ext-zymo)
+
+[NOTE]: The count file should contain only unique names, so mothur assumes your fasta, list and taxonomy files also contain only uniques.
+
+Selected 88900 sequences from your count file.
+Selected 1518 sequences from your fasta file.
+
+Output File names:
+data/mothur_output//errorinput.pick.count_table
+data/mothur_output//errorinput.pick.fasta
+
+
+mothur > 
+	seq.error(fasta=current, count=current, reference=data/reference_files//zymo_mock.align, aligned=F)
+Using data/mothur_output//errorinput.pick.count_table as input file for the count parameter.
+Using data/mothur_output//errorinput.pick.fasta as input file for the fasta parameter.
+
+Multiply error rate by 100 to obtain the percent sequencing errors.
+Overall error rate:	0.000553011
+Errors	Sequences
+0	82012
+1	739
+2	3286
+3	651
+4	165
+5	192
+6	117
+7	0
+8	2
+9	1
+10	0
+11	0
+12	0
+13	0
+14	0
+15	0
+16	0
+17	0
+18	0
+19	0
+20	0
+21	0
+22	0
+23	0
+24	0
+25	0
+26	0
+27	0
+28	0
+29	0
+30	0
+31	0
+32	0
+33	0
+34	1
+35	0
+36	0
+37	0
+38	0
+39	0
+40	0
+41	0
+42	0
+43	0
+44	1
+It took 76 secs to check 1518 sequences.
+
+Output File Names: 
+data/mothur_output//errorinput.pick.error.summary
+data/mothur_output//errorinput.pick.error.seq
+data/mothur_output//errorinput.pick.error.chimera
+data/mothur_output//errorinput.pick.error.seq.forward
+data/mothur_output//errorinput.pick.error.seq.reverse
+data/mothur_output//errorinput.pick.error.count
+data/mothur_output//errorinput.pick.error.matrix
+data/mothur_output//errorinput.pick.error.ref
+
+
+mothur > quit()

@@ -1,0 +1,2885 @@
+Windows version
+
+mothur v.1.42.3
+Last updated: 6/24/19
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Batch Mode
+
+
+mothur > set.dir(input=data/mothur_output/, output=data/mothur_output/)
+Mothur's directories:
+outputDir=data/mothur_output/\
+inputDir=data/mothur_output/\
+
+mothur > sub.sample(shared=final.shared, size=400)
+PCRwater contains 15. Eliminating.
+PCRwater_neg contains 8. Eliminating.
+empty contains 38. Eliminating.
+empty_2 contains 60. Eliminating.
+empty_3 contains 25. Eliminating.
+empty_8 contains 288. Eliminating.
+pm contains 12. Eliminating.
+pm_ext contains 7. Eliminating.
+pm_f_21 contains 34. Eliminating.
+pm_f_26 contains 38. Eliminating.
+pm_rt_81 contains 12. Eliminating.
+pm_rt_86 contains 27. Eliminating.
+pm_zdr_111 contains 1. Eliminating.
+pm_zdr_112 contains 2. Eliminating.
+pm_zdr_113 contains 5. Eliminating.
+pm_zdr_114 contains 4. Eliminating.
+pm_zdr_115 contains 1. Eliminating.
+pm_zdr_117 contains 2. Eliminating.
+pm_zdr_118 contains 2. Eliminating.
+pm_zdr_120 contains 9. Eliminating.
+pm_zdr_128 contains 9. Eliminating.
+pm_zdr_129 contains 34. Eliminating.
+pm_zdr_130 contains 20. Eliminating.
+pm_zdr_131 contains 22. Eliminating.
+pm_zdr_132 contains 15. Eliminating.
+ps contains 333. Eliminating.
+ps_rt_201 contains 47. Eliminating.
+ps_zdr_229 contains 2. Eliminating.
+ps_zdr_232 contains 3. Eliminating.
+ps_zdr_234 contains 3. Eliminating.
+ps_zdr_235 contains 1. Eliminating.
+ps_zdr_236 contains 2. Eliminating.
+ps_zdr_238 contains 16. Eliminating.
+ps_zdr_247 contains 15. Eliminating.
+ps_zdr_248 contains 12. Eliminating.
+ps_zdr_249 contains 21. Eliminating.
+ps_zdr_250 contains 22. Eliminating.
+ps_zdr_253 contains 1. Eliminating.
+ps_zdr_254 contains 1. Eliminating.
+ps_zdr_255 contains 1. Eliminating.
+z contains 21. Eliminating.
+z_ext contains 24. Eliminating.
+z_og_320 contains 124. Eliminating.
+z_rt contains 19. Eliminating.
+z_rt_324 contains 344. Eliminating.
+z_zdr contains 338. Eliminating.
+z_zdr_366 contains 68. Eliminating.
+z_zdr_371 contains 53. Eliminating.
+z_zdr_380 contains 165. Eliminating.
+Sampling 400 from each group.
+0.03
+
+Output File Names: 
+data/mothur_output/\final.0.03.subsample.shared
+
+
+mothur > rarefaction.single(shared=final.shared, calc=sobs, freq=100)
+
+Using 4 processors.
+
+Processing group PCRwater
+
+0.03
+
+Processing group PCRwater_neg
+
+0.03
+
+Processing group PCRwater_neg_2
+
+0.03
+
+Processing group bad
+
+0.03
+
+Processing group bad_ps
+
+0.03
+
+Processing group bad_ps_10
+
+0.03
+
+Processing group bad_ps_5
+
+0.03
+
+Processing group bad_ps_6
+
+0.03
+
+Processing group bad_ps_7
+
+0.03
+
+Processing group bad_ps_8
+
+0.03
+
+Processing group bad_ps_9
+
+0.03
+
+Processing group empty
+
+0.03
+
+Processing group empty_2
+
+0.03
+
+Processing group empty_3
+
+0.03
+
+Processing group empty_5
+
+0.03
+
+Processing group empty_6
+
+0.03
+
+Processing group empty_7
+
+0.03
+
+Processing group empty_8
+
+0.03
+
+Processing group pm
+
+0.03
+
+Processing group pm_ext
+
+0.03
+
+Processing group pm_f
+
+0.03
+
+Processing group pm_f_21
+
+0.03
+
+Processing group pm_f_22
+
+0.03
+
+Processing group pm_f_23
+
+0.03
+
+Processing group pm_f_24
+
+0.03
+
+Processing group pm_f_25
+
+0.03
+
+Processing group pm_f_26
+
+0.03
+
+Processing group pm_f_27
+
+0.03
+
+Processing group pm_f_28
+
+0.03
+
+Processing group pm_f_29
+
+0.03
+
+Processing group pm_f_30
+
+0.03
+
+Processing group pm_f_31
+
+0.03
+
+Processing group pm_f_32
+
+0.03
+
+Processing group pm_f_33
+
+0.03
+
+Processing group pm_f_34
+
+0.03
+
+Processing group pm_f_35
+
+0.03
+
+Processing group pm_f_36
+
+0.03
+
+Processing group pm_f_37
+
+0.03
+
+Processing group pm_f_38
+
+0.03
+
+Processing group pm_f_39
+
+0.03
+
+Processing group pm_f_40
+
+0.03
+
+Processing group pm_f_41
+
+0.03
+
+Processing group pm_f_42
+
+0.03
+
+Processing group pm_f_43
+
+0.03
+
+Processing group pm_f_44
+
+0.03
+
+Processing group pm_f_45
+
+0.03
+
+Processing group pm_f_46
+
+0.03
+
+Processing group pm_f_47
+
+0.03
+
+Processing group pm_f_48
+
+0.03
+
+Processing group pm_f_49
+
+0.03
+
+Processing group pm_og
+
+0.03
+
+Processing group pm_og_51
+
+0.03
+
+Processing group pm_og_52
+
+0.03
+
+Processing group pm_og_53
+
+0.03
+
+Processing group pm_og_54
+
+0.03
+
+Processing group pm_og_55
+
+0.03
+
+Processing group pm_og_56
+
+0.03
+
+Processing group pm_og_57
+
+0.03
+
+Processing group pm_og_58
+
+0.03
+
+Processing group pm_og_59
+
+0.03
+
+Processing group pm_og_60
+
+0.03
+
+Processing group pm_og_61
+
+0.03
+
+Processing group pm_og_62
+
+0.03
+
+Processing group pm_og_63
+
+0.03
+
+Processing group pm_og_64
+
+0.03
+
+Processing group pm_og_65
+
+0.03
+
+Processing group pm_og_66
+
+0.03
+
+Processing group pm_og_67
+
+0.03
+
+Processing group pm_og_68
+
+0.03
+
+Processing group pm_og_69
+
+0.03
+
+Processing group pm_og_70
+
+0.03
+
+Processing group pm_og_71
+
+0.03
+
+Processing group pm_og_72
+
+0.03
+
+Processing group pm_og_73
+
+0.03
+
+Processing group pm_og_74
+
+0.03
+
+Processing group pm_og_75
+
+0.03
+
+Processing group pm_og_76
+
+0.03
+
+Processing group pm_og_77
+
+0.03
+
+Processing group pm_og_78
+
+0.03
+
+Processing group pm_og_79
+
+0.03
+
+Processing group pm_rt
+
+0.03
+
+Processing group pm_rt_100
+
+0.03
+
+Processing group pm_rt_101
+
+0.03
+
+Processing group pm_rt_102
+
+0.03
+
+Processing group pm_rt_103
+
+0.03
+
+Processing group pm_rt_104
+
+0.03
+
+Processing group pm_rt_105
+
+0.03
+
+Processing group pm_rt_106
+
+0.03
+
+Processing group pm_rt_107
+
+0.03
+
+Processing group pm_rt_108
+
+0.03
+
+Processing group pm_rt_109
+
+0.03
+
+Processing group pm_rt_81
+
+0.03
+
+Processing group pm_rt_82
+
+0.03
+
+Processing group pm_rt_83
+
+0.03
+
+Processing group pm_rt_84
+
+0.03
+
+Processing group pm_rt_85
+
+0.03
+
+Processing group pm_rt_86
+
+0.03
+
+Processing group pm_rt_87
+
+0.03
+
+Processing group pm_rt_88
+
+0.03
+
+Processing group pm_rt_89
+
+0.03
+
+Processing group pm_rt_90
+
+0.03
+
+Processing group pm_rt_91
+
+0.03
+
+Processing group pm_rt_92
+
+0.03
+
+Processing group pm_rt_93
+
+0.03
+
+Processing group pm_rt_94
+
+0.03
+
+Processing group pm_rt_95
+
+0.03
+
+Processing group pm_rt_96
+
+0.03
+
+Processing group pm_rt_97
+
+0.03
+
+Processing group pm_rt_98
+
+0.03
+
+Processing group pm_rt_99
+
+0.03
+
+Processing group pm_zdr_111
+
+0.03
+
+Processing group pm_zdr_112
+
+0.03
+
+Processing group pm_zdr_113
+
+0.03
+
+Processing group pm_zdr_114
+
+0.03
+
+Processing group pm_zdr_115
+
+0.03
+
+Processing group pm_zdr_117
+
+0.03
+
+Processing group pm_zdr_118
+
+0.03
+
+Processing group pm_zdr_120
+
+0.03
+
+Processing group pm_zdr_128
+
+0.03
+
+Processing group pm_zdr_129
+
+0.03
+
+Processing group pm_zdr_130
+
+0.03
+
+Processing group pm_zdr_131
+
+0.03
+
+Processing group pm_zdr_132
+
+0.03
+
+Processing group ps
+
+0.03
+
+Processing group ps_ext
+
+0.03
+
+Processing group ps_f
+
+0.03
+
+Processing group ps_f_143
+
+0.03
+
+Processing group ps_f_144
+
+0.03
+
+Processing group ps_f_145
+
+0.03
+
+Processing group ps_f_146
+
+0.03
+
+Processing group ps_f_147
+
+0.03
+
+Processing group ps_f_148
+
+0.03
+
+Processing group ps_f_149
+
+0.03
+
+Processing group ps_f_150
+
+0.03
+
+Processing group ps_f_151
+
+0.03
+
+Processing group ps_f_152
+
+0.03
+
+Processing group ps_f_153
+
+0.03
+
+Processing group ps_f_154
+
+0.03
+
+Processing group ps_f_155
+
+0.03
+
+Processing group ps_f_156
+
+0.03
+
+Processing group ps_f_157
+
+0.03
+
+Processing group ps_f_158
+
+0.03
+
+Processing group ps_f_159
+
+0.03
+
+Processing group ps_f_160
+
+0.03
+
+Processing group ps_f_161
+
+0.03
+
+Processing group ps_f_162
+
+0.03
+
+Processing group ps_f_163
+
+0.03
+
+Processing group ps_f_164
+
+0.03
+
+Processing group ps_f_165
+
+0.03
+
+Processing group ps_f_166
+
+0.03
+
+Processing group ps_f_167
+
+0.03
+
+Processing group ps_f_168
+
+0.03
+
+Processing group ps_f_169
+
+0.03
+
+Processing group ps_f_170
+
+0.03
+
+Processing group ps_f_171
+
+0.03
+
+Processing group ps_og
+
+0.03
+
+Processing group ps_og_173
+
+0.03
+
+Processing group ps_og_174
+
+0.03
+
+Processing group ps_og_175
+
+0.03
+
+Processing group ps_og_176
+
+0.03
+
+Processing group ps_og_177
+
+0.03
+
+Processing group ps_og_178
+
+0.03
+
+Processing group ps_og_179
+
+0.03
+
+Processing group ps_og_180
+
+0.03
+
+Processing group ps_og_181
+
+0.03
+
+Processing group ps_og_182
+
+0.03
+
+Processing group ps_og_183
+
+0.03
+
+Processing group ps_og_184
+
+0.03
+
+Processing group ps_og_185
+
+0.03
+
+Processing group ps_og_186
+
+0.03
+
+Processing group ps_og_187
+
+0.03
+
+Processing group ps_og_188
+
+0.03
+
+Processing group ps_og_189
+
+0.03
+
+Processing group ps_og_190
+
+0.03
+
+Processing group ps_og_191
+
+0.03
+
+Processing group ps_og_192
+
+0.03
+
+Processing group ps_og_193
+
+0.03
+
+Processing group ps_og_194
+
+0.03
+
+Processing group ps_og_195
+
+0.03
+
+Processing group ps_og_196
+
+0.03
+
+Processing group ps_og_197
+
+0.03
+
+Processing group ps_rt
+
+0.03
+
+Processing group ps_rt_199
+
+0.03
+
+Processing group ps_rt_200
+
+0.03
+
+Processing group ps_rt_201
+
+0.03
+
+Processing group ps_rt_202
+
+0.03
+
+Processing group ps_rt_203
+
+0.03
+
+Processing group ps_rt_204
+
+0.03
+
+Processing group ps_rt_205
+
+0.03
+
+Processing group ps_rt_206
+
+0.03
+
+Processing group ps_rt_207
+
+0.03
+
+Processing group ps_rt_208
+
+0.03
+
+Processing group ps_rt_209
+
+0.03
+
+Processing group ps_rt_210
+
+0.03
+
+Processing group ps_rt_211
+
+0.03
+
+Processing group ps_rt_212
+
+0.03
+
+Processing group ps_rt_213
+
+0.03
+
+Processing group ps_rt_214
+
+0.03
+
+Processing group ps_rt_215
+
+0.03
+
+Processing group ps_rt_216
+
+0.03
+
+Processing group ps_rt_217
+
+0.03
+
+Processing group ps_rt_218
+
+0.03
+
+Processing group ps_rt_219
+
+0.03
+
+Processing group ps_rt_220
+
+0.03
+
+Processing group ps_rt_221
+
+0.03
+
+Processing group ps_rt_222
+
+0.03
+
+Processing group ps_rt_223
+
+0.03
+
+Processing group ps_rt_224
+
+0.03
+
+Processing group ps_rt_225
+
+0.03
+
+Processing group ps_rt_226
+
+0.03
+
+Processing group ps_rt_227
+
+0.03
+
+Processing group ps_zdr_229
+
+0.03
+
+Processing group ps_zdr_231
+
+0.03
+
+Processing group ps_zdr_232
+
+0.03
+
+Processing group ps_zdr_233
+
+0.03
+
+Processing group ps_zdr_234
+
+0.03
+
+Processing group ps_zdr_235
+
+0.03
+
+Processing group ps_zdr_236
+
+0.03
+
+Processing group ps_zdr_238
+
+0.03
+
+Processing group ps_zdr_246
+
+0.03
+
+Processing group ps_zdr_247
+
+0.03
+
+Processing group ps_zdr_248
+
+0.03
+
+Processing group ps_zdr_249
+
+0.03
+
+Processing group ps_zdr_250
+
+0.03
+
+Processing group ps_zdr_253
+
+0.03
+
+Processing group ps_zdr_254
+
+0.03
+
+Processing group ps_zdr_255
+
+0.03
+
+Processing group z
+
+0.03
+
+Processing group z_ext
+
+0.03
+
+Processing group z_f
+
+0.03
+
+Processing group z_f_261
+
+0.03
+
+Processing group z_f_262
+
+0.03
+
+Processing group z_f_263
+
+0.03
+
+Processing group z_f_264
+
+0.03
+
+Processing group z_f_265
+
+0.03
+
+Processing group z_f_266
+
+0.03
+
+Processing group z_f_267
+
+0.03
+
+Processing group z_f_268
+
+0.03
+
+Processing group z_f_269
+
+0.03
+
+Processing group z_f_270
+
+0.03
+
+Processing group z_f_271
+
+0.03
+
+Processing group z_f_272
+
+0.03
+
+Processing group z_f_273
+
+0.03
+
+Processing group z_f_274
+
+0.03
+
+Processing group z_f_275
+
+0.03
+
+Processing group z_f_276
+
+0.03
+
+Processing group z_f_277
+
+0.03
+
+Processing group z_f_278
+
+0.03
+
+Processing group z_f_279
+
+0.03
+
+Processing group z_f_280
+
+0.03
+
+Processing group z_f_281
+
+0.03
+
+Processing group z_f_282
+
+0.03
+
+Processing group z_f_283
+
+0.03
+
+Processing group z_f_284
+
+0.03
+
+Processing group z_f_285
+
+0.03
+
+Processing group z_f_286
+
+0.03
+
+Processing group z_f_287
+
+0.03
+
+Processing group z_f_288
+
+0.03
+
+Processing group z_f_289
+
+0.03
+
+Processing group z_mock
+
+0.03
+
+Processing group z_og
+
+0.03
+
+Processing group z_og_292
+
+0.03
+
+Processing group z_og_293
+
+0.03
+
+Processing group z_og_294
+
+0.03
+
+Processing group z_og_295
+
+0.03
+
+Processing group z_og_296
+
+0.03
+
+Processing group z_og_297
+
+0.03
+
+Processing group z_og_298
+
+0.03
+
+Processing group z_og_299
+
+0.03
+
+Processing group z_og_300
+
+0.03
+
+Processing group z_og_301
+
+0.03
+
+Processing group z_og_302
+
+0.03
+
+Processing group z_og_303
+
+0.03
+
+Processing group z_og_304
+
+0.03
+
+Processing group z_og_305
+
+0.03
+
+Processing group z_og_306
+
+0.03
+
+Processing group z_og_307
+
+0.03
+
+Processing group z_og_308
+
+0.03
+
+Processing group z_og_309
+
+0.03
+
+Processing group z_og_310
+
+0.03
+
+Processing group z_og_311
+
+0.03
+
+Processing group z_og_312
+
+0.03
+
+Processing group z_og_313
+
+0.03
+
+Processing group z_og_314
+
+0.03
+
+Processing group z_og_315
+
+0.03
+
+Processing group z_og_316
+
+0.03
+
+Processing group z_og_317
+
+0.03
+
+Processing group z_og_318
+
+0.03
+
+Processing group z_og_319
+
+0.03
+
+Processing group z_og_320
+
+0.03
+
+Processing group z_rt
+
+0.03
+
+Processing group z_rt_322
+
+0.03
+
+Processing group z_rt_323
+
+0.03
+
+Processing group z_rt_324
+
+0.03
+
+Processing group z_rt_325
+
+0.03
+
+Processing group z_rt_326
+
+0.03
+
+Processing group z_rt_327
+
+0.03
+
+Processing group z_rt_328
+
+0.03
+
+Processing group z_rt_329
+
+0.03
+
+Processing group z_rt_330
+
+0.03
+
+Processing group z_rt_331
+
+0.03
+
+Processing group z_rt_332
+
+0.03
+
+Processing group z_rt_333
+
+0.03
+
+Processing group z_rt_334
+
+0.03
+
+Processing group z_rt_335
+
+0.03
+
+Processing group z_rt_336
+
+0.03
+
+Processing group z_rt_337
+
+0.03
+
+Processing group z_rt_338
+
+0.03
+
+Processing group z_rt_339
+
+0.03
+
+Processing group z_rt_340
+
+0.03
+
+Processing group z_rt_341
+
+0.03
+
+Processing group z_rt_342
+
+0.03
+
+Processing group z_rt_343
+
+0.03
+
+Processing group z_rt_344
+
+0.03
+
+Processing group z_rt_345
+
+0.03
+
+Processing group z_rt_346
+
+0.03
+
+Processing group z_rt_347
+
+0.03
+
+Processing group z_rt_348
+
+0.03
+
+Processing group z_rt_349
+
+0.03
+
+Processing group z_rt_350
+
+0.03
+
+Processing group z_zdr
+
+0.03
+
+Processing group z_zdr_352
+
+0.03
+
+Processing group z_zdr_353
+
+0.03
+
+Processing group z_zdr_354
+
+0.03
+
+Processing group z_zdr_355
+
+0.03
+
+Processing group z_zdr_356
+
+0.03
+
+Processing group z_zdr_357
+
+0.03
+
+Processing group z_zdr_358
+
+0.03
+
+Processing group z_zdr_359
+
+0.03
+
+Processing group z_zdr_360
+
+0.03
+
+Processing group z_zdr_361
+
+0.03
+
+Processing group z_zdr_362
+
+0.03
+
+Processing group z_zdr_363
+
+0.03
+
+Processing group z_zdr_364
+
+0.03
+
+Processing group z_zdr_365
+
+0.03
+
+Processing group z_zdr_366
+
+0.03
+
+Processing group z_zdr_367
+
+0.03
+
+Processing group z_zdr_368
+
+0.03
+
+Processing group z_zdr_369
+
+0.03
+
+Processing group z_zdr_370
+
+0.03
+
+Processing group z_zdr_371
+
+0.03
+
+Processing group z_zdr_372
+
+0.03
+
+Processing group z_zdr_373
+
+0.03
+
+Processing group z_zdr_374
+
+0.03
+
+Processing group z_zdr_375
+
+0.03
+
+Processing group z_zdr_376
+
+0.03
+
+Processing group z_zdr_377
+
+0.03
+
+Processing group z_zdr_378
+
+0.03
+
+Processing group z_zdr_379
+
+0.03
+
+Processing group z_zdr_380
+
+0.03
+
+Processing group zymo
+
+0.03
+
+Processing group zymo_mockpcr
+
+0.03
+
+Processing group zymo_mockpcr_383
+
+0.03
+
+It took 435 secs to run rarefaction.single.
+
+Output File Names: 
+data/mothur_output/\final.groups.rarefaction
+
+
+mothur > summary.single(shared=current, calc=nseqs-coverage-invsimpson-shannon-sobs, subsample=400)
+Using data/mothur_output/\final.shared as input file for the shared parameter.
+PCRwater contains 15. Eliminating.
+PCRwater_neg contains 8. Eliminating.
+empty contains 38. Eliminating.
+empty_2 contains 60. Eliminating.
+empty_3 contains 25. Eliminating.
+empty_8 contains 288. Eliminating.
+pm contains 12. Eliminating.
+pm_ext contains 7. Eliminating.
+pm_f_21 contains 34. Eliminating.
+pm_f_26 contains 38. Eliminating.
+pm_rt_81 contains 12. Eliminating.
+pm_rt_86 contains 27. Eliminating.
+pm_zdr_111 contains 1. Eliminating.
+pm_zdr_112 contains 2. Eliminating.
+pm_zdr_113 contains 5. Eliminating.
+pm_zdr_114 contains 4. Eliminating.
+pm_zdr_115 contains 1. Eliminating.
+pm_zdr_117 contains 2. Eliminating.
+pm_zdr_118 contains 2. Eliminating.
+pm_zdr_120 contains 9. Eliminating.
+pm_zdr_128 contains 9. Eliminating.
+pm_zdr_129 contains 34. Eliminating.
+pm_zdr_130 contains 20. Eliminating.
+pm_zdr_131 contains 22. Eliminating.
+pm_zdr_132 contains 15. Eliminating.
+ps contains 333. Eliminating.
+ps_rt_201 contains 47. Eliminating.
+ps_zdr_229 contains 2. Eliminating.
+ps_zdr_232 contains 3. Eliminating.
+ps_zdr_234 contains 3. Eliminating.
+ps_zdr_235 contains 1. Eliminating.
+ps_zdr_236 contains 2. Eliminating.
+ps_zdr_238 contains 16. Eliminating.
+ps_zdr_247 contains 15. Eliminating.
+ps_zdr_248 contains 12. Eliminating.
+ps_zdr_249 contains 21. Eliminating.
+ps_zdr_250 contains 22. Eliminating.
+ps_zdr_253 contains 1. Eliminating.
+ps_zdr_254 contains 1. Eliminating.
+ps_zdr_255 contains 1. Eliminating.
+z contains 21. Eliminating.
+z_ext contains 24. Eliminating.
+z_og_320 contains 124. Eliminating.
+z_rt contains 19. Eliminating.
+z_rt_324 contains 344. Eliminating.
+z_zdr contains 338. Eliminating.
+z_zdr_366 contains 68. Eliminating.
+z_zdr_371 contains 53. Eliminating.
+z_zdr_380 contains 165. Eliminating.
+
+Processing group PCRwater_neg_2
+
+0.03
+
+Processing group bad
+
+0.03
+
+Processing group bad_ps
+
+0.03
+
+Processing group bad_ps_10
+
+0.03
+
+Processing group bad_ps_5
+
+0.03
+
+Processing group bad_ps_6
+
+0.03
+
+Processing group bad_ps_7
+
+0.03
+
+Processing group bad_ps_8
+
+0.03
+
+Processing group bad_ps_9
+
+0.03
+
+Processing group empty_5
+
+0.03
+
+Processing group empty_6
+
+0.03
+
+Processing group empty_7
+
+0.03
+
+Processing group pm_f
+
+0.03
+
+Processing group pm_f_22
+
+0.03
+
+Processing group pm_f_23
+
+0.03
+
+Processing group pm_f_24
+
+0.03
+
+Processing group pm_f_25
+
+0.03
+
+Processing group pm_f_27
+
+0.03
+
+Processing group pm_f_28
+
+0.03
+
+Processing group pm_f_29
+
+0.03
+
+Processing group pm_f_30
+
+0.03
+
+Processing group pm_f_31
+
+0.03
+
+Processing group pm_f_32
+
+0.03
+
+Processing group pm_f_33
+
+0.03
+
+Processing group pm_f_34
+
+0.03
+
+Processing group pm_f_35
+
+0.03
+
+Processing group pm_f_36
+
+0.03
+
+Processing group pm_f_37
+
+0.03
+
+Processing group pm_f_38
+
+0.03
+
+Processing group pm_f_39
+
+0.03
+
+Processing group pm_f_40
+
+0.03
+
+Processing group pm_f_41
+
+0.03
+
+Processing group pm_f_42
+
+0.03
+
+Processing group pm_f_43
+
+0.03
+
+Processing group pm_f_44
+
+0.03
+
+Processing group pm_f_45
+
+0.03
+
+Processing group pm_f_46
+
+0.03
+
+Processing group pm_f_47
+
+0.03
+
+Processing group pm_f_48
+
+0.03
+
+Processing group pm_f_49
+
+0.03
+
+Processing group pm_og
+
+0.03
+
+Processing group pm_og_51
+
+0.03
+
+Processing group pm_og_52
+
+0.03
+
+Processing group pm_og_53
+
+0.03
+
+Processing group pm_og_54
+
+0.03
+
+Processing group pm_og_55
+
+0.03
+
+Processing group pm_og_56
+
+0.03
+
+Processing group pm_og_57
+
+0.03
+
+Processing group pm_og_58
+
+0.03
+
+Processing group pm_og_59
+
+0.03
+
+Processing group pm_og_60
+
+0.03
+
+Processing group pm_og_61
+
+0.03
+
+Processing group pm_og_62
+
+0.03
+
+Processing group pm_og_63
+
+0.03
+
+Processing group pm_og_64
+
+0.03
+
+Processing group pm_og_65
+
+0.03
+
+Processing group pm_og_66
+
+0.03
+
+Processing group pm_og_67
+
+0.03
+
+Processing group pm_og_68
+
+0.03
+
+Processing group pm_og_69
+
+0.03
+
+Processing group pm_og_70
+
+0.03
+
+Processing group pm_og_71
+
+0.03
+
+Processing group pm_og_72
+
+0.03
+
+Processing group pm_og_73
+
+0.03
+
+Processing group pm_og_74
+
+0.03
+
+Processing group pm_og_75
+
+0.03
+
+Processing group pm_og_76
+
+0.03
+
+Processing group pm_og_77
+
+0.03
+
+Processing group pm_og_78
+
+0.03
+
+Processing group pm_og_79
+
+0.03
+
+Processing group pm_rt
+
+0.03
+
+Processing group pm_rt_100
+
+0.03
+
+Processing group pm_rt_101
+
+0.03
+
+Processing group pm_rt_102
+
+0.03
+
+Processing group pm_rt_103
+
+0.03
+
+Processing group pm_rt_104
+
+0.03
+
+Processing group pm_rt_105
+
+0.03
+
+Processing group pm_rt_106
+
+0.03
+
+Processing group pm_rt_107
+
+0.03
+
+Processing group pm_rt_108
+
+0.03
+
+Processing group pm_rt_109
+
+0.03
+
+Processing group pm_rt_82
+
+0.03
+
+Processing group pm_rt_83
+
+0.03
+
+Processing group pm_rt_84
+
+0.03
+
+Processing group pm_rt_85
+
+0.03
+
+Processing group pm_rt_87
+
+0.03
+
+Processing group pm_rt_88
+
+0.03
+
+Processing group pm_rt_89
+
+0.03
+
+Processing group pm_rt_90
+
+0.03
+
+Processing group pm_rt_91
+
+0.03
+
+Processing group pm_rt_92
+
+0.03
+
+Processing group pm_rt_93
+
+0.03
+
+Processing group pm_rt_94
+
+0.03
+
+Processing group pm_rt_95
+
+0.03
+
+Processing group pm_rt_96
+
+0.03
+
+Processing group pm_rt_97
+
+0.03
+
+Processing group pm_rt_98
+
+0.03
+
+Processing group pm_rt_99
+
+0.03
+
+Processing group ps_ext
+
+0.03
+
+Processing group ps_f
+
+0.03
+
+Processing group ps_f_143
+
+0.03
+
+Processing group ps_f_144
+
+0.03
+
+Processing group ps_f_145
+
+0.03
+
+Processing group ps_f_146
+
+0.03
+
+Processing group ps_f_147
+
+0.03
+
+Processing group ps_f_148
+
+0.03
+
+Processing group ps_f_149
+
+0.03
+
+Processing group ps_f_150
+
+0.03
+
+Processing group ps_f_151
+
+0.03
+
+Processing group ps_f_152
+
+0.03
+
+Processing group ps_f_153
+
+0.03
+
+Processing group ps_f_154
+
+0.03
+
+Processing group ps_f_155
+
+0.03
+
+Processing group ps_f_156
+
+0.03
+
+Processing group ps_f_157
+
+0.03
+
+Processing group ps_f_158
+
+0.03
+
+Processing group ps_f_159
+
+0.03
+
+Processing group ps_f_160
+
+0.03
+
+Processing group ps_f_161
+
+0.03
+
+Processing group ps_f_162
+
+0.03
+
+Processing group ps_f_163
+
+0.03
+
+Processing group ps_f_164
+
+0.03
+
+Processing group ps_f_165
+
+0.03
+
+Processing group ps_f_166
+
+0.03
+
+Processing group ps_f_167
+
+0.03
+
+Processing group ps_f_168
+
+0.03
+
+Processing group ps_f_169
+
+0.03
+
+Processing group ps_f_170
+
+0.03
+
+Processing group ps_f_171
+
+0.03
+
+Processing group ps_og
+
+0.03
+
+Processing group ps_og_173
+
+0.03
+
+Processing group ps_og_174
+
+0.03
+
+Processing group ps_og_175
+
+0.03
+
+Processing group ps_og_176
+
+0.03
+
+Processing group ps_og_177
+
+0.03
+
+Processing group ps_og_178
+
+0.03
+
+Processing group ps_og_179
+
+0.03
+
+Processing group ps_og_180
+
+0.03
+
+Processing group ps_og_181
+
+0.03
+
+Processing group ps_og_182
+
+0.03
+
+Processing group ps_og_183
+
+0.03
+
+Processing group ps_og_184
+
+0.03
+
+Processing group ps_og_185
+
+0.03
+
+Processing group ps_og_186
+
+0.03
+
+Processing group ps_og_187
+
+0.03
+
+Processing group ps_og_188
+
+0.03
+
+Processing group ps_og_189
+
+0.03
+
+Processing group ps_og_190
+
+0.03
+
+Processing group ps_og_191
+
+0.03
+
+Processing group ps_og_192
+
+0.03
+
+Processing group ps_og_193
+
+0.03
+
+Processing group ps_og_194
+
+0.03
+
+Processing group ps_og_195
+
+0.03
+
+Processing group ps_og_196
+
+0.03
+
+Processing group ps_og_197
+
+0.03
+
+Processing group ps_rt
+
+0.03
+
+Processing group ps_rt_199
+
+0.03
+
+Processing group ps_rt_200
+
+0.03
+
+Processing group ps_rt_202
+
+0.03
+
+Processing group ps_rt_203
+
+0.03
+
+Processing group ps_rt_204
+
+0.03
+
+Processing group ps_rt_205
+
+0.03
+
+Processing group ps_rt_206
+
+0.03
+
+Processing group ps_rt_207
+
+0.03
+
+Processing group ps_rt_208
+
+0.03
+
+Processing group ps_rt_209
+
+0.03
+
+Processing group ps_rt_210
+
+0.03
+
+Processing group ps_rt_211
+
+0.03
+
+Processing group ps_rt_212
+
+0.03
+
+Processing group ps_rt_213
+
+0.03
+
+Processing group ps_rt_214
+
+0.03
+
+Processing group ps_rt_215
+
+0.03
+
+Processing group ps_rt_216
+
+0.03
+
+Processing group ps_rt_217
+
+0.03
+
+Processing group ps_rt_218
+
+0.03
+
+Processing group ps_rt_219
+
+0.03
+
+Processing group ps_rt_220
+
+0.03
+
+Processing group ps_rt_221
+
+0.03
+
+Processing group ps_rt_222
+
+0.03
+
+Processing group ps_rt_223
+
+0.03
+
+Processing group ps_rt_224
+
+0.03
+
+Processing group ps_rt_225
+
+0.03
+
+Processing group ps_rt_226
+
+0.03
+
+Processing group ps_rt_227
+
+0.03
+
+Processing group ps_zdr_231
+
+0.03
+
+Processing group ps_zdr_233
+
+0.03
+
+Processing group ps_zdr_246
+
+0.03
+
+Processing group z_f
+
+0.03
+
+Processing group z_f_261
+
+0.03
+
+Processing group z_f_262
+
+0.03
+
+Processing group z_f_263
+
+0.03
+
+Processing group z_f_264
+
+0.03
+
+Processing group z_f_265
+
+0.03
+
+Processing group z_f_266
+
+0.03
+
+Processing group z_f_267
+
+0.03
+
+Processing group z_f_268
+
+0.03
+
+Processing group z_f_269
+
+0.03
+
+Processing group z_f_270
+
+0.03
+
+Processing group z_f_271
+
+0.03
+
+Processing group z_f_272
+
+0.03
+
+Processing group z_f_273
+
+0.03
+
+Processing group z_f_274
+
+0.03
+
+Processing group z_f_275
+
+0.03
+
+Processing group z_f_276
+
+0.03
+
+Processing group z_f_277
+
+0.03
+
+Processing group z_f_278
+
+0.03
+
+Processing group z_f_279
+
+0.03
+
+Processing group z_f_280
+
+0.03
+
+Processing group z_f_281
+
+0.03
+
+Processing group z_f_282
+
+0.03
+
+Processing group z_f_283
+
+0.03
+
+Processing group z_f_284
+
+0.03
+
+Processing group z_f_285
+
+0.03
+
+Processing group z_f_286
+
+0.03
+
+Processing group z_f_287
+
+0.03
+
+Processing group z_f_288
+
+0.03
+
+Processing group z_f_289
+
+0.03
+
+Processing group z_mock
+
+0.03
+
+Processing group z_og
+
+0.03
+
+Processing group z_og_292
+
+0.03
+
+Processing group z_og_293
+
+0.03
+
+Processing group z_og_294
+
+0.03
+
+Processing group z_og_295
+
+0.03
+
+Processing group z_og_296
+
+0.03
+
+Processing group z_og_297
+
+0.03
+
+Processing group z_og_298
+
+0.03
+
+Processing group z_og_299
+
+0.03
+
+Processing group z_og_300
+
+0.03
+
+Processing group z_og_301
+
+0.03
+
+Processing group z_og_302
+
+0.03
+
+Processing group z_og_303
+
+0.03
+
+Processing group z_og_304
+
+0.03
+
+Processing group z_og_305
+
+0.03
+
+Processing group z_og_306
+
+0.03
+
+Processing group z_og_307
+
+0.03
+
+Processing group z_og_308
+
+0.03
+
+Processing group z_og_309
+
+0.03
+
+Processing group z_og_310
+
+0.03
+
+Processing group z_og_311
+
+0.03
+
+Processing group z_og_312
+
+0.03
+
+Processing group z_og_313
+
+0.03
+
+Processing group z_og_314
+
+0.03
+
+Processing group z_og_315
+
+0.03
+
+Processing group z_og_316
+
+0.03
+
+Processing group z_og_317
+
+0.03
+
+Processing group z_og_318
+
+0.03
+
+Processing group z_og_319
+
+0.03
+
+Processing group z_rt_322
+
+0.03
+
+Processing group z_rt_323
+
+0.03
+
+Processing group z_rt_325
+
+0.03
+
+Processing group z_rt_326
+
+0.03
+
+Processing group z_rt_327
+
+0.03
+
+Processing group z_rt_328
+
+0.03
+
+Processing group z_rt_329
+
+0.03
+
+Processing group z_rt_330
+
+0.03
+
+Processing group z_rt_331
+
+0.03
+
+Processing group z_rt_332
+
+0.03
+
+Processing group z_rt_333
+
+0.03
+
+Processing group z_rt_334
+
+0.03
+
+Processing group z_rt_335
+
+0.03
+
+Processing group z_rt_336
+
+0.03
+
+Processing group z_rt_337
+
+0.03
+
+Processing group z_rt_338
+
+0.03
+
+Processing group z_rt_339
+
+0.03
+
+Processing group z_rt_340
+
+0.03
+
+Processing group z_rt_341
+
+0.03
+
+Processing group z_rt_342
+
+0.03
+
+Processing group z_rt_343
+
+0.03
+
+Processing group z_rt_344
+
+0.03
+
+Processing group z_rt_345
+
+0.03
+
+Processing group z_rt_346
+
+0.03
+
+Processing group z_rt_347
+
+0.03
+
+Processing group z_rt_348
+
+0.03
+
+Processing group z_rt_349
+
+0.03
+
+Processing group z_rt_350
+
+0.03
+
+Processing group z_zdr_352
+
+0.03
+
+Processing group z_zdr_353
+
+0.03
+
+Processing group z_zdr_354
+
+0.03
+
+Processing group z_zdr_355
+
+0.03
+
+Processing group z_zdr_356
+
+0.03
+
+Processing group z_zdr_357
+
+0.03
+
+Processing group z_zdr_358
+
+0.03
+
+Processing group z_zdr_359
+
+0.03
+
+Processing group z_zdr_360
+
+0.03
+
+Processing group z_zdr_361
+
+0.03
+
+Processing group z_zdr_362
+
+0.03
+
+Processing group z_zdr_363
+
+0.03
+
+Processing group z_zdr_364
+
+0.03
+
+Processing group z_zdr_365
+
+0.03
+
+Processing group z_zdr_367
+
+0.03
+
+Processing group z_zdr_368
+
+0.03
+
+Processing group z_zdr_369
+
+0.03
+
+Processing group z_zdr_370
+
+0.03
+
+Processing group z_zdr_372
+
+0.03
+
+Processing group z_zdr_373
+
+0.03
+
+Processing group z_zdr_374
+
+0.03
+
+Processing group z_zdr_375
+
+0.03
+
+Processing group z_zdr_376
+
+0.03
+
+Processing group z_zdr_377
+
+0.03
+
+Processing group z_zdr_378
+
+0.03
+
+Processing group z_zdr_379
+
+0.03
+
+Processing group zymo
+
+0.03
+
+Processing group zymo_mockpcr
+
+0.03
+
+Processing group zymo_mockpcr_383
+
+0.03
+
+Output File Names: 
+data/mothur_output/\final.groups.ave-std.summary
+data/mothur_output/\final.groups.summary
+
+
+mothur > dist.shared(shared=current, calc=thetayc-braycurtis-jclass, subsample=400)
+Using data/mothur_output/\final.shared as input file for the shared parameter.
+
+Using 4 processors.
+PCRwater contains 15. Eliminating.
+PCRwater_neg contains 8. Eliminating.
+empty contains 38. Eliminating.
+empty_2 contains 60. Eliminating.
+empty_3 contains 25. Eliminating.
+empty_8 contains 288. Eliminating.
+pm contains 12. Eliminating.
+pm_ext contains 7. Eliminating.
+pm_f_21 contains 34. Eliminating.
+pm_f_26 contains 38. Eliminating.
+pm_rt_81 contains 12. Eliminating.
+pm_rt_86 contains 27. Eliminating.
+pm_zdr_111 contains 1. Eliminating.
+pm_zdr_112 contains 2. Eliminating.
+pm_zdr_113 contains 5. Eliminating.
+pm_zdr_114 contains 4. Eliminating.
+pm_zdr_115 contains 1. Eliminating.
+pm_zdr_117 contains 2. Eliminating.
+pm_zdr_118 contains 2. Eliminating.
+pm_zdr_120 contains 9. Eliminating.
+pm_zdr_128 contains 9. Eliminating.
+pm_zdr_129 contains 34. Eliminating.
+pm_zdr_130 contains 20. Eliminating.
+pm_zdr_131 contains 22. Eliminating.
+pm_zdr_132 contains 15. Eliminating.
+ps contains 333. Eliminating.
+ps_rt_201 contains 47. Eliminating.
+ps_zdr_229 contains 2. Eliminating.
+ps_zdr_232 contains 3. Eliminating.
+ps_zdr_234 contains 3. Eliminating.
+ps_zdr_235 contains 1. Eliminating.
+ps_zdr_236 contains 2. Eliminating.
+ps_zdr_238 contains 16. Eliminating.
+ps_zdr_247 contains 15. Eliminating.
+ps_zdr_248 contains 12. Eliminating.
+ps_zdr_249 contains 21. Eliminating.
+ps_zdr_250 contains 22. Eliminating.
+ps_zdr_253 contains 1. Eliminating.
+ps_zdr_254 contains 1. Eliminating.
+ps_zdr_255 contains 1. Eliminating.
+z contains 21. Eliminating.
+z_ext contains 24. Eliminating.
+z_og_320 contains 124. Eliminating.
+z_rt contains 19. Eliminating.
+z_rt_324 contains 344. Eliminating.
+z_zdr contains 338. Eliminating.
+z_zdr_366 contains 68. Eliminating.
+z_zdr_371 contains 53. Eliminating.
+z_zdr_380 contains 165. Eliminating.
+0.03
+
+Output File Names: 
+data/mothur_output/\final.thetayc.0.03.lt.ave.dist
+data/mothur_output/\final.thetayc.0.03.lt.std.dist
+data/mothur_output/\final.braycurtis.0.03.lt.ave.dist
+data/mothur_output/\final.braycurtis.0.03.lt.std.dist
+data/mothur_output/\final.jclass.0.03.lt.ave.dist
+data/mothur_output/\final.jclass.0.03.lt.std.dist
+
+
+mothur > nmds(phylip=final.thetayc.0.03.lt.ave.dist)
+Processing Dimension: 2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Number of dimensions:	2
+Lowest stress :	0.334281
+R-squared for configuration:	0.526446
+
+Output File Names: 
+data/mothur_output/\final.thetayc.0.03.lt.ave.nmds.iters
+data/mothur_output/\final.thetayc.0.03.lt.ave.nmds.stress
+data/mothur_output/\final.thetayc.0.03.lt.ave.nmds.axes
+
+
+mothur > pcoa(phylip=final.braycurtis.0.03.lt.ave.dist)
+
+Processing...
+Rsq 1 axis: 0.299529
+Rsq 2 axis: 0.433164
+Rsq 3 axis: 0.49745
+
+Output File Names: 
+data/mothur_output/\final.braycurtis.0.03.lt.ave.pcoa.axes
+data/mothur_output/\final.braycurtis.0.03.lt.ave.pcoa.loadings
+
+
+mothur > quit()

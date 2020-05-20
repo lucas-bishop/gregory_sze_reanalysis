@@ -1,0 +1,60 @@
+Windows version
+
+mothur v.1.42.3
+Last updated: 6/24/19
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+
+University of Michigan
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+For questions and analysis support, please visit our forum at https://forum.mothur.org
+
+Type 'quit()' to exit program
+
+[NOTE]: Setting random seed to 19760620.
+
+Script Mode
+
+
+mothur > get.groups(fasta=data/mothur_output//errorinput.fasta, count=data/mothur_output//errorinput.count_table, groups=z_mock-z_ext-zymo_mockpcr-zymo_mockpcr_383-z-pm_ext-ps_ext-zymo)
+
+[NOTE]: The count file should contain only unique names, so mothur assumes your fasta, list and taxonomy files also contain only uniques.
+
+Selected 88900 sequences from your count file.
+Selected 1518 sequences from your fasta file.
+
+Output File names:
+data/mothur_output//errorinput.pick.count_table
+data/mothur_output//errorinput.pick.fasta
+
+
+mothur > 
+	seq.error(fasta=current, count=current, reference=data/reference_files//zymo_mock.align, aligned=F)
+Using data/mothur_output//errorinput.pick.count_table as input file for the count parameter.
+Using data/mothur_output//errorinput.pick.fasta as input file for the fasta parameter.
+Unable to open data/reference_files//zymo_mock.align. Trying default C:\Users\bisho\bin\zymo_mock.align.
+Unable to open C:\Users\bisho\bin\zymo_mock.align. Trying mothur's executable location C:\Users\bisho\bin\zymo_mock.align.
+Unable to open C:\Users\bisho\bin\zymo_mock.align.
+Unable to open data/reference_files//zymo_mock.align
+[ERROR]: did not complete seq.error.
+
+mothur > quit()
+
+
+************************************************************
+************************************************************
+************************************************************
+Detected 1 [ERROR] messages, please review.
+************************************************************
+************************************************************
+************************************************************
