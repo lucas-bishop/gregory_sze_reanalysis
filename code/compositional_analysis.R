@@ -18,7 +18,7 @@ taxonomy <- read_tsv("data/mothur_output/final.taxonomy") %>%
 
 otu_data <- shared %>% select(-label, -numOtus) %>%
   pivot_longer(cols=-Group, names_to="otu", values_to="count") %>% 
-  mutate(relabund = count / 400)
+  mutate(relabund = count / 1000)
 
 phylum_data <- inner_join(otu_data, taxonomy)
 
@@ -32,7 +32,7 @@ phylum_taxa <- phylum_data %>%
 top_genus <- phylum_data %>% group_by(genus) %>% 
   summarize(agg_rel_abund=sum(relabund)) %>% 
   arrange(desc(agg_rel_abund)) %>% 
-  top_n(n=9, agg_rel_abund) %>% 
+  top_n(n=12, agg_rel_abund) %>% 
   pull(genus)
 
 genus_taxa <- phylum_data %>% 
@@ -42,10 +42,10 @@ genus_taxa <- phylum_data %>%
   ungroup()
 
 # needs improvement but general idea is there
-top9_stripplot <- genus_taxa %>% filter(genus %in% top_genus) %>% 
+top12_stripplot <- genus_taxa %>% filter(genus %in% top_genus) %>% 
 ggplot(aes(x= kit, y=agg_rel_abund))+
-  geom_hline(yintercept=1/400, color="gray")+
-  geom_jitter(width = 0.3, alpha = 0.3) + 
+  geom_hline(yintercept=1/1000, color="gray")+
+  geom_jitter(alpha = 0.3, size = 0.2) + 
   geom_boxplot() +
   facet_wrap(~genus) +
   labs(title=NULL, 
@@ -53,7 +53,7 @@ ggplot(aes(x= kit, y=agg_rel_abund))+
   scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
   theme(axis.text.x = element_text(angle=45, hjust=1))
 
-ggsave("results/figures/top9_stripchart.pdf", top9_stripplot)
+ggsave("results/figures/top12_stripchart.png", top12_stripplot, width = 10, height = 6.5)
 
 
 

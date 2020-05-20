@@ -126,7 +126,9 @@ PS_Zymo_plot <- genus_taxa %>% filter(kit == "PowerSoil" | kit == "Zymobiomics")
   scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
   theme_classic()
 
+#myplots <- c(PM_PS_plot, PM_Zymo_plot)
 
+#ggsave("wilccoxon_stripcharts.png", myplots)
 
 
 
