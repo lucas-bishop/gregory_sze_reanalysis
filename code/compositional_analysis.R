@@ -41,7 +41,7 @@ genus_taxa <- phylum_data %>%
   inner_join(., metadata, by = 'Group') %>% 
   ungroup()
 
-# needs improvement but general idea is there
+##make strip plot to see if there are any apparent difference between the genera 
 top12_stripplot <- genus_taxa %>% filter(genus %in% top_genus) %>% 
 ggplot(aes(x= kit, y=agg_rel_abund))+
   geom_hline(yintercept=1/1000, color="gray")+
