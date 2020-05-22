@@ -21,7 +21,7 @@ taxonomy <- read_tsv("data/mothur_output/final.taxonomy") %>%
 
 otu_data <- shared %>% select(-label, -numOtus) %>%
   pivot_longer(cols=-Group, names_to="otu", values_to="count") %>% 
-  mutate(relabund = count / 1000)
+  mutate(relabund = count / 1000) 
 
 joined_data <- inner_join(otu_data, taxonomy)
 
@@ -34,9 +34,10 @@ joined_data <- inner_join(otu_data, taxonomy)
 #   pull(genus)
 
 genus_taxa <- joined_data %>% 
+  inner_join(., metadata, by = 'Group') %>% 
+  filter(storage == "RoomTemp") %>% 
   group_by(Group, genus) %>% 
   summarize(agg_rel_abund = sum(relabund)) %>% 
-  inner_join(., metadata, by = 'Group') %>% 
   ungroup()
 
 # Made function to create the table with needed p values from hypothesis testing #
@@ -45,7 +46,7 @@ wilcoxon_table_genus <- function(data, kit1, kit2){
   data %>% 
   filter(kit == kit1 | kit == kit2) %>% 
     nest(sample_data = c(-genus)) %>%
-    mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=.)))) %>%
+    mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=., paired = TRUE)))) %>%
     unnest(test) %>% 
     mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% arrange(p.value.adj)
 }
