@@ -33,11 +33,17 @@ joined_data <- inner_join(otu_data, taxonomy)
 rt_taxa_abund <- joined_data %>%
   group_by(Group, genus) %>%
   # sum all relative abundances grouped by genera
-  summarize(agg_rel_abund = sum(relabund)) %>%
+  summarize(agg_rel_abund = sum(relabund)) %>% 
+  # filter out genera that aren't present. This will help me select for only genera that have >= 1 read in all 3 kits
+  filter(agg_rel_abund > 0.000) %>% 
   # need to get rid of rows that contain genera that are different between two kits on the same stool_id
   # need to add a mutate(delta_abund = )
   inner_join(., metadata, by = "Group") %>%
   ungroup()
+
+# looks like there were 73 genera that were not shared between all 3 kit communities at RT
+shared_genera <- rt_taxa_abund %>% 
+  group_by(genus) %>% filter(n() > 2)
 
 # Made function to create the table with needed p values from hypothesis testing #
 # Needs to be paired to be able to look at the change in abundance from one kit to another
