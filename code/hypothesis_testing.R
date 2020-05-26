@@ -6,8 +6,9 @@ library(purrr)
 
 #hypotesis testing
 shared <- read_tsv("data/mothur_output/final.0.03.subsample.shared", col_types=cols(Group=col_character()))
-metadata <- read_csv("data/final.metadata.csv")# %>% 
-  #filter(kit == "PowerMag" | kit == "PowerSoil" | kit == "Zymobiomics")
+# Just want one storage condition for now
+metadata <- read_csv("data/final.metadata.csv") %>% filter(storage == "RoomTemp") %>% 
+  filter(kit == "PowerMag" | kit == "PowerSoil" | kit == "Zymobiomics")
 taxonomy <- read_tsv("data/mothur_output/final.taxonomy") %>% 
   rename_all(tolower) %>% 
   # Split taxonomic information into separate columns for each taxonomic level  
@@ -26,19 +27,16 @@ otu_data <- shared %>% select(-label, -numOtus) %>%
 
 joined_data <- inner_join(otu_data, taxonomy)
 
-meta_join <- joined_data %>% full_join(., metadata, by = "Group") %>% drop_na()
-
-# Pick only one storage condition for now - RT
-
 
 # Need to calculate difference in agg_rel_abund grouped by person, between two kits. With Zero at middle of the x axis
 
-rt_taxa_abund <- meta_join %>% 
-  filter(storage == "RoomTemp") %>% 
-  group_by(Group, genus) %>% 
+rt_taxa_abund <- joined_data %>%
+  group_by(Group, genus) %>%
   # sum all relative abundances grouped by genera
-  mutate(agg_rel_abund = sum(relabund)) %>% 
-  select(Group, genus, kit, storage, stool_id, agg_rel_abund) %>% 
+  summarize(agg_rel_abund = sum(relabund)) %>%
+  # need to get rid of rows that contain genera that are different between two kits on the same stool_id
+  # need to add a mutate(delta_abund = )
+  inner_join(., metadata, by = "Group") %>%
   ungroup()
 
 # Made function to create the table with needed p values from hypothesis testing #
@@ -52,17 +50,17 @@ wilcoxon_table_genus <- function(data, kit1, kit2){
     #mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% 
     arrange(p.value.adj)
 }
-# PM - PS comparison
-PM_PS_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "PowerSoil")
-
-sig_PM_PS_genus <- PM_PS_tests %>% 
-  filter(p.value.adj <= 0.05) %>%
-  pull(genus)
-
 # PM - Zymo comparison
 PM_Zymo_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "Zymobiomics")
 
-sig_PM_Zymo_genus <- PM_Zymo_tests %>% 
+sig_PM_Zymo_genus <- PM_PS_tests %>% 
+  filter(p.value.adj <= 0.05) %>%
+  pull(genus)
+
+# PM - PS comparison
+PM_PS_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "PowerSoil")
+
+sig_PM_PS_genus <- PM_Zymo_tests %>% 
   filter(p.value.adj <= 0.05) %>% 
   pull(genus)
 
