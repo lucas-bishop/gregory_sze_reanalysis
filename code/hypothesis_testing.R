@@ -7,7 +7,7 @@ library(purrr)
 #hypotesis testing
 shared <- read_tsv("data/mothur_output/final.0.03.subsample.shared", col_types=cols(Group=col_character()))
 # Just want one storage condition for now
-metadata <- read_csv("data/final.metadata.csv") %>% filter(storage == "RoomTemp") %>% 
+metadata <- read_csv("data/final.metadata.csv") %>% #filter(storage == "RoomTemp") %>% 
   filter(kit == "PowerMag" | kit == "PowerSoil" | kit == "Zymobiomics")
 taxonomy <- read_tsv("data/mothur_output/final.taxonomy") %>% 
   rename_all(tolower) %>% 
@@ -35,15 +35,18 @@ rt_taxa_abund <- joined_data %>%
   # sum all relative abundances grouped by genera
   summarize(agg_rel_abund = sum(relabund)) %>% 
   # filter out genera that aren't present. This will help me select for only genera that have >= 1 read in all 3 kits
-  filter(agg_rel_abund > 0.000) %>% 
+  #filter(agg_rel_abund > 0.000) %>% 
   # need to get rid of rows that contain genera that are different between two kits on the same stool_id
   # need to add a mutate(delta_abund = )
   inner_join(., metadata, by = "Group") %>%
   ungroup()
 
-# looks like there were 73 genera that were not shared between all 3 kit communities at RT
-shared_genera <- rt_taxa_abund %>% 
-  group_by(genus) %>% filter(n() > 2)
+relevant_genera <- rt_taxa_abund %>% group_by(genus) %>% 
+  filter(agg_rel_abund > 0.000) %>% count() %>% 
+  mutate(frequency = n/276) %>% filter(frequency >= 0.25) %>% pull(genus)
+
+
+
 
 # Made function to create the table with needed p values from hypothesis testing #
 # Needs to be paired to be able to look at the change in abundance from one kit to another
