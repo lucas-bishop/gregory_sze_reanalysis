@@ -34,7 +34,6 @@ rt_taxa_abund <- joined_data %>%
   group_by(Group, genus) %>%
   # sum all relative abundances grouped by genera
   summarize(agg_rel_abund = sum(relabund)) %>% 
-  # filter out genera that aren't present. This will help me select for only genera that have >= 1 read in all 3 kits
   #filter(agg_rel_abund > 0.000) %>% 
   # need to get rid of rows that contain genera that are different between two kits on the same stool_id
   # need to add a mutate(delta_abund = )
@@ -44,6 +43,15 @@ rt_taxa_abund <- joined_data %>%
 relevant_genera <- rt_taxa_abund %>% group_by(genus) %>% 
   filter(agg_rel_abund > 0.000) %>% count() %>% 
   mutate(frequency = n/276) %>% filter(frequency >= 0.25) %>% pull(genus)
+
+
+# convert to wide data frame to set up for calculating deltas
+rt_compare <- rt_taxa_abund %>% 
+  filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
+  select(-Group, -storage) %>% 
+  pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>% 
+  #drop the rows for stool samples that may have been dropped from one kit
+  drop_na()
 
 
 
