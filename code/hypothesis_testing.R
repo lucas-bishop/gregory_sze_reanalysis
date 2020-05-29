@@ -49,9 +49,12 @@ relevant_genera <- rt_taxa_abund %>% group_by(genus) %>%
 rt_compare <- rt_taxa_abund %>% 
   filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
   select(-Group, -storage) %>% 
-  pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>% 
+  pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>%  
   #drop the rows for stool samples that may have been dropped from one kit
-  drop_na()
+  group_by(genus) %>% 
+  mutate(delta_PMPS = ifelse((PowerMag - PowerSoil) == 0, NA, PowerMag - PowerSoil),
+         delta_PMZymo = ifelse((PowerMag - Zymobiomics) == 0, NA, PowerMag - Zymobiomics),
+         delta_PSZymo = ifelse((PowerSoil - Zymobiomics) == 0, NA, PowerSoil - Zymobiomics))
 
 
 
@@ -59,12 +62,12 @@ rt_compare <- rt_taxa_abund %>%
 # Made function to create the table with needed p values from hypothesis testing #
 # Needs to be paired to be able to look at the change in abundance from one kit to another
 wilcoxon_table_genus <- function(data, kit1, kit2){
-  data %>% 
+  data %>% filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
   filter(kit == kit1 | kit == kit2) %>% 
     nest(sample_data = c(-genus)) %>%
     mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=., paired = TRUE)))) %>%
     unnest(test) %>% 
-    #mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% 
+    mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% 
     arrange(p.value.adj)
 }
 # PM - Zymo comparison
