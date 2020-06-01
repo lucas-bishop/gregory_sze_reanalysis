@@ -56,7 +56,10 @@ rt_compare <- rt_taxa_abund %>%
          delta_PMZymo = ifelse((PowerMag - Zymobiomics) == 0, NA, PowerMag - Zymobiomics),
          delta_PSZymo = ifelse((PowerSoil - Zymobiomics) == 0, NA, PowerSoil - Zymobiomics))
 
-
+delta_table <- rt_compare %>% 
+  select(-PowerMag, -PowerSoil, -Zymobiomics) %>% 
+  pivot_longer(cols = c(delta_PMPS, delta_PMZymo, delta_PSZymo),
+               names_to = "metric", values_to = "value")
 
 
 # Made function to create the table with needed p values from hypothesis testing #
