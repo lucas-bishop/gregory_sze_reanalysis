@@ -38,7 +38,8 @@ rt_taxa_abund <- joined_data %>%
   # need to get rid of rows that contain genera that are different between two kits on the same stool_id
   # need to add a mutate(delta_abund = )
   inner_join(., metadata, by = "Group") %>%
-  ungroup()
+  ungroup() %>% 
+  mutate(agg_rel_abund = ifelse(agg_rel_abund == 0, NA, agg_rel_abund))
 
 relevant_genera <- rt_taxa_abund %>% group_by(genus) %>% 
   filter(agg_rel_abund > 0.000) %>% count() %>% 
@@ -61,30 +62,37 @@ delta_table <- rt_compare %>%
   pivot_longer(cols = c(delta_PMPS, delta_PMZymo, delta_PSZymo),
                names_to = "metric", values_to = "value")
 
-
-# Made function to create the table with needed p values from hypothesis testing #
-# Needs to be paired to be able to look at the change in abundance from one kit to another
+# get significantly different taxa
 wilcoxon_table_genus <- function(data, kit1, kit2){
-  data %>% filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
-  filter(kit == kit1 | kit == kit2) %>% 
-    nest(sample_data = c(-genus)) %>%
-    mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=., paired = TRUE)))) %>%
-    unnest(test) %>% 
-    mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% 
-    arrange(p.value.adj)
+  data %>% 
+  filter(storage == "RoomTemp", genus %in% relevant_genera,kit == kit1 | kit == kit2) %>% 
+  select(-Group, -storage) %>%
+  pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>% 
+  drop_na() %>% pivot_longer(cols=-c(genus, stool_id),names_to = "kit", values_to = "agg_rel_abund") %>% 
+  nest(sample_data = c(-genus)) %>%
+  mutate(test=map(sample_data, ~tidy(wilcox.test(agg_rel_abund~kit, data=., paired = TRUE, alternative = "two.sided")))) %>%
+  unnest(test) %>% mutate(p.value.adj=p.adjust(p.value, method="BH")) %>% 
+  arrange(p.value.adj)
 }
-# PM - Zymo comparison
-PM_Zymo_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "Zymobiomics")
 
-sig_PM_Zymo_genus <- PM_PS_tests %>% 
-  filter(p.value.adj <= 0.05) %>%
-  pull(genus)
+
+
+
+
 
 # PM - PS comparison
 PM_PS_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "PowerSoil")
 
-sig_PM_PS_genus <- PM_Zymo_tests %>% 
+sig_PM_PS_genus <- PM_PS_tests %>% 
   filter(p.value.adj <= 0.05) %>% 
+  pull(genus)
+
+
+# PM - Zymo comparison
+PM_Zymo_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "Zymobiomics")
+
+sig_PM_Zymo_genus <- PM_Zymo_tests %>% 
+  filter(p.value.adj <= 0.05) %>%
   pull(genus)
 
 # PS - Zymo comparison
@@ -93,66 +101,6 @@ PS_Zymo_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerSoil", "Zymobiomics")
 sig_PS_Zymo_genus <- PS_Zymo_tests %>% 
   filter(p.value.adj <= 0.05) %>% 
   pull(genus)
-
-## Plot which are different
-## Facet by comparison probably
-## Maybe make a plot function?
-
-PM_PS_plot <- rt_taxa_abund %>% filter(kit == "PowerMag" | kit == "PowerSoil") %>% 
-filter(genus %in% sig_PM_PS_genus) %>%
-  mutate(genus=factor(genus, levels=sig_PM_PS_genus)) %>%
-  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
-  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/1000, color="gray") +
-  geom_boxplot(size = 1) +
-  geom_point(alpha = 0.1) +
-  scale_color_manual(name=NULL,
-                      values=c("blue", "red"),
-                      breaks=c("PowerMag" , "PowerSoil"),
-                      labels=c("PowerMag", "PowerSoil")) +
-  labs(x=NULL,
-       y="Relative abundance (%)") +
-  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
-  theme_classic()
-
-PM_Zymo_plot <- rt_taxa_abund %>% filter(kit == "PowerMag" | kit == "Zymobiomics") %>% 
-  filter(genus %in% sig_PM_Zymo_genus) %>%
-  mutate(genus=factor(genus, levels=sig_PM_Zymo_genus)) %>%
-  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
-  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/1000, color="gray") +
-  geom_boxplot(size = 0.8) +
-  #geom_point(alpha = 0.1) +
-  scale_color_manual(name=NULL,
-                     values=c("blue", "green3"),
-                     breaks=c("PowerMag" , "Zymobiomics"),
-                     labels=c("PowerMag", "Zymobiomics")) +
-  labs(x=NULL, y="Relative abundance (%)") +
-  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
-  coord_flip() +
-  theme_classic() + theme(legend.position = "bottom")
-
-# At 1000 subsamples there are no significantly different genera
-PS_Zymo_plot <- rt_taxa_abund %>% filter(kit == "PowerSoil" | kit == "Zymobiomics") %>% 
-  filter(genus %in% sig_PS_Zymo_genus) %>%
-  mutate(genus=factor(genus, levels=sig_PS_Zymo_genus)) %>%
-  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
-  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/1000, color="gray") +
-  geom_boxplot(size = 1) +
-  geom_point(alpha = 0.1) +
-  scale_color_manual(name=NULL,
-                     values=c("red", "green3"),
-                     breaks=c("PowerSoil", "Zymobiomics"),
-                     labels=c("PowerSoil", "Zymobiomics")) +
-  labs(x=NULL,
-       y="Relative abundance (%)") +
-  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
-  theme_classic()
-
-#myplots <- c(PM_PS_plot, PM_Zymo_plot)
-
-#ggsave("wilccoxon_stripcharts.png", myplots)
 
 
 
