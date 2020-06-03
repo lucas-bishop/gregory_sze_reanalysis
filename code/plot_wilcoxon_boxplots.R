@@ -22,21 +22,13 @@ delta_table <- rt_compare %>%
 
 
 
-PM_PS_plot <- rt_taxa_abund %>% filter(kit == "PowerMag" | kit == "PowerSoil") %>% 
+PM_PS_plot <- rt_compare %>% 
   filter(genus %in% sig_PM_PS_genus) %>%
-  mutate(genus=factor(genus, levels=sig_PM_PS_genus)) %>%
-  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
-  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/1000, color="gray") +
+  ggplot(aes(x=genus, y=delta_PMPS*100)) +
   geom_boxplot(size = 1) +
-  geom_point(alpha = 0.1) +
-  scale_color_manual(name=NULL,
-                     values=c("blue", "red"),
-                     breaks=c("PowerMag" , "PowerSoil"),
-                     labels=c("PowerMag", "PowerSoil")) +
   labs(x=NULL,
-       y="Relative abundance (%)") +
-  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
+       y="Change in relative abundance (%)\nfrom PowerMag to PowerSoil") +
+  coord_flip() +
   theme_classic()
 
 PM_Zymo_plot <- rt_taxa_abund %>% filter(kit == "PowerMag" | kit == "Zymobiomics") %>% 
