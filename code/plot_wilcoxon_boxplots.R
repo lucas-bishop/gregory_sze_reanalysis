@@ -15,14 +15,19 @@ rt_compare <- rt_taxa_abund %>%
          delta_PMZymo = ifelse((PowerMag - Zymobiomics) == 0, NA, PowerMag - Zymobiomics),
          delta_PSZymo = ifelse((PowerSoil - Zymobiomics) == 0, NA, PowerSoil - Zymobiomics))
 
+# create long version of df for making combined figure
 delta_table <- rt_compare %>% 
   select(-PowerMag, -PowerSoil, -Zymobiomics) %>% 
   pivot_longer(cols = c(delta_PMPS, delta_PMZymo, delta_PSZymo),
-               names_to = "metric", values_to = "value")
+               names_to = "metric", values_to = "value") %>% 
+  drop_na()
 
 
+## Plotting
 
-PM_PS_plot <- rt_compare %>% 
+
+PM_PS_plot <- rt_compare %>%
+  select(genus, stool_id, delta_PMPS) %>% drop_na() %>% 
   filter(genus %in% sig_PM_PS_genus) %>%
   ggplot(aes(x=genus, y=delta_PMPS*100)) +
   geom_boxplot(size = 1) +
@@ -31,42 +36,29 @@ PM_PS_plot <- rt_compare %>%
   coord_flip() +
   theme_classic()
 
-PM_Zymo_plot <- rt_taxa_abund %>% filter(kit == "PowerMag" | kit == "Zymobiomics") %>% 
+PM_Zymo_plot <- rt_compare %>% 
+  select(genus, stool_id, delta_PMZymo) %>% drop_na() %>% 
   filter(genus %in% sig_PM_Zymo_genus) %>%
-  mutate(genus=factor(genus, levels=sig_PM_Zymo_genus)) %>%
-  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
-  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/1000, color="gray") +
-  geom_boxplot(size = 0.8) +
-  #geom_point(alpha = 0.1) +
-  scale_color_manual(name=NULL,
-                     values=c("blue", "green3"),
-                     breaks=c("PowerMag" , "Zymobiomics"),
-                     labels=c("PowerMag", "Zymobiomics")) +
-  labs(x=NULL, y="Relative abundance (%)") +
-  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
-  coord_flip() +
-  theme_classic() + theme(legend.position = "bottom")
-
-# At 1000 subsamples there are no significantly different genera
-PS_Zymo_plot <- rt_taxa_abund %>% filter(kit == "PowerSoil" | kit == "Zymobiomics") %>% 
-  filter(genus %in% sig_PS_Zymo_genus) %>%
-  mutate(genus=factor(genus, levels=sig_PS_Zymo_genus)) %>%
-  mutate(agg_rel_abund=agg_rel_abund+1/21000) %>%
-  ggplot(aes(x=genus, y=agg_rel_abund, color=kit)) +
-  geom_hline(yintercept=1/1000, color="gray") +
+  ggplot(aes(x=genus, y=delta_PMZymo*100)) +
   geom_boxplot(size = 1) +
-  geom_point(alpha = 0.1) +
-  scale_color_manual(name=NULL,
-                     values=c("red", "green3"),
-                     breaks=c("PowerSoil", "Zymobiomics"),
-                     labels=c("PowerSoil", "Zymobiomics")) +
   labs(x=NULL,
-       y="Relative abundance (%)") +
-  scale_y_log10(breaks=c(1e-4, 1e-3, 1e-2, 1e-1, 1), labels=c(1e-2, 1e-1, 1, 10, 100)) +
+       y="Change in relative abundance (%)\nfrom PowerMag to Zymobiomics") +
+  coord_flip() +
   theme_classic()
 
-#myplots <- c(PM_PS_plot, PM_Zymo_plot)
+PS_Zymo_plot <- rt_compare %>% 
+  select(genus, stool_id, delta_PSZymo) %>% drop_na() %>% 
+  filter(genus %in% sig_PS_Zymo_genus) %>%
+  ggplot(aes(x=genus, y=delta_PSZymo*100)) +
+  geom_boxplot(size = 1) +
+  labs(x=NULL,
+       y="Change in relative abundance (%)\nfrom PowerSoil to Zymobiomics") +
+  coord_flip() +
+  theme_classic()
 
-#ggsave("wilccoxon_stripcharts.png", myplots)
+
+
+ggsave("delta_PMPS_boxplot.png", PM_PS_plot)
+ggsave("delta_PMZymo_boxplot.png", PM_Zymo_plot)
+ggsave("delta_PSZymo_boxplot.png", PS_Zymo_plot)
 
