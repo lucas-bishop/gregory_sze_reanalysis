@@ -4,6 +4,23 @@
 
 source("code/hypothesis_testing.R")
 
+# convert to wide data frame to set up for calculating deltas
+rt_compare <- rt_taxa_abund %>% 
+  filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
+  select(-Group, -storage) %>% 
+  pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>%  
+  #drop the rows for stool samples that may have been dropped from one kit
+  group_by(genus) %>% 
+  mutate(delta_PMPS = ifelse((PowerMag - PowerSoil) == 0, NA, PowerMag - PowerSoil),
+         delta_PMZymo = ifelse((PowerMag - Zymobiomics) == 0, NA, PowerMag - Zymobiomics),
+         delta_PSZymo = ifelse((PowerSoil - Zymobiomics) == 0, NA, PowerSoil - Zymobiomics))
+
+delta_table <- rt_compare %>% 
+  select(-PowerMag, -PowerSoil, -Zymobiomics) %>% 
+  pivot_longer(cols = c(delta_PMPS, delta_PMZymo, delta_PSZymo),
+               names_to = "metric", values_to = "value")
+
+
 
 PM_PS_plot <- rt_taxa_abund %>% filter(kit == "PowerMag" | kit == "PowerSoil") %>% 
   filter(genus %in% sig_PM_PS_genus) %>%

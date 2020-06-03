@@ -64,7 +64,7 @@ wilcoxon_table_genus <- function(data, kit1, kit2){
 PM_PS_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "PowerSoil")
 
 sig_PM_PS_genus <- PM_PS_tests %>% 
-  filter(p.value.adj <= 0.05) %>% 
+  filter(p.value <= 0.05) %>% 
   pull(genus)
 
 
@@ -72,34 +72,18 @@ sig_PM_PS_genus <- PM_PS_tests %>%
 PM_Zymo_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerMag", "Zymobiomics")
 
 sig_PM_Zymo_genus <- PM_Zymo_tests %>% 
-  filter(p.value.adj <= 0.05) %>%
+  filter(p.value <= 0.05) %>%
   pull(genus)
 
 # PS - Zymo comparison
 PS_Zymo_tests <- wilcoxon_table_genus(rt_taxa_abund, "PowerSoil", "Zymobiomics")
 
 sig_PS_Zymo_genus <- PS_Zymo_tests %>% 
-  filter(p.value.adj <= 0.05) %>% 
+  filter(p.value <= 0.05) %>% 
   pull(genus)
 
-## Need to plot deltas rather than actual relative abundances
 
 
-# convert to wide data frame to set up for calculating deltas
-rt_compare <- rt_taxa_abund %>% 
-  filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
-  select(-Group, -storage) %>% 
-  pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>%  
-  #drop the rows for stool samples that may have been dropped from one kit
-  group_by(genus) %>% 
-  mutate(delta_PMPS = ifelse((PowerMag - PowerSoil) == 0, NA, PowerMag - PowerSoil),
-         delta_PMZymo = ifelse((PowerMag - Zymobiomics) == 0, NA, PowerMag - Zymobiomics),
-         delta_PSZymo = ifelse((PowerSoil - Zymobiomics) == 0, NA, PowerSoil - Zymobiomics))
-
-delta_table <- rt_compare %>% 
-  select(-PowerMag, -PowerSoil, -Zymobiomics) %>% 
-  pivot_longer(cols = c(delta_PMPS, delta_PMZymo, delta_PSZymo),
-               names_to = "metric", values_to = "value")
 
 
 
