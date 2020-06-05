@@ -5,25 +5,21 @@
 source("code/hypothesis_testing.R")
 
 # convert to wide data frame to set up for calculating deltas
+
+# recalc with change in abundance divided by starting abundance: (PM -PS) / PM
 rt_compare <- rt_taxa_abund %>% 
   filter(storage == "RoomTemp", genus %in% relevant_genera) %>% 
   select(-Group, -storage) %>% 
   pivot_wider(id_cols = c(genus, stool_id), names_from = kit, values_from = agg_rel_abund) %>%  
-  #drop the rows for stool samples that may have been dropped from one kit
   group_by(genus) %>% 
   mutate(delta_PMPS = ifelse((PowerMag - PowerSoil) == 0, NA, PowerMag - PowerSoil),
          delta_PMZymo = ifelse((PowerMag - Zymobiomics) == 0, NA, PowerMag - Zymobiomics),
          delta_PSZymo = ifelse((PowerSoil - Zymobiomics) == 0, NA, PowerSoil - Zymobiomics))
 
-# create long version of df for making combined figure
-delta_table <- rt_compare %>% 
-  select(-PowerMag, -PowerSoil, -Zymobiomics) %>% 
-  pivot_longer(cols = c(delta_PMPS, delta_PMZymo, delta_PSZymo),
-               names_to = "metric", values_to = "value") %>% 
-  drop_na()
-
 
 ## Plotting
+
+### Need to look at how many reads were even in these, and gram negative vs gram postive
 
 
 PM_PS_plot <- rt_compare %>%
